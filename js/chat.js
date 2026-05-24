@@ -24,7 +24,7 @@ const Chat = (() => {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message,
+          message: (window.currentLang === 'de' ? '[Bitte antworte auf Deutsch] ' : '') + message,
           history:  chatHistory.slice(-12),
           pet_data: pet()     || {},
           sitters:  sitters() || [],

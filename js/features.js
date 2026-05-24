@@ -28,7 +28,8 @@ const BACKEND = (window.location.hostname === 'localhost' || window.location.hos
     btnText.textContent = 'Analysing…';
     form.querySelector('.sym-submit').disabled = true;
 
-    const message = `My ${species}${breed ? ` (${breed})` : ''}, aged ${age}, has the following symptoms: ${symptoms}.
+    const langPrefix = window.currentLang === 'de' ? '[Bitte antworte auf Deutsch] ' : '';
+    const message = langPrefix + `My ${species}${breed ? ` (${breed})` : ''}, aged ${age}, has the following symptoms: ${symptoms}.
 Start your reply with exactly one of these urgency labels on its own line: MONITOR, VET SOON, or EMERGENCY. Then give your advice.`;
 
     try {
@@ -223,7 +224,7 @@ async function generateStayReport() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: `Write a warm, reassuring 2-sentence daily report for a pet owner. Their pet ${petName} is staying with ${sitterName}. Based on today's check-ins: ate well, played, napped, seems settled. Be specific, warm, and concise.`,
+        message: (window.currentLang === 'de' ? '[Bitte antworte auf Deutsch] ' : '') + `Write a warm, reassuring 2-sentence daily report for a pet owner. Their pet ${petName} is staying with ${sitterName}. Based on today's check-ins: ate well, played, napped, seems settled. Be specific, warm, and concise.`,
         history: [], pet_data: p || {}, sitters: [],
       }),
     });
@@ -331,7 +332,7 @@ Keep responses concise — 2 to 4 sentences. Never refuse to engage.`;
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message: text,
+          message: (window.currentLang === 'de' ? '[Bitte antworte auf Deutsch] ' : '') + text,
           history: vetHistory.slice(-10).map(m => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.content })),
           pet_data: {},
           sitters: [],

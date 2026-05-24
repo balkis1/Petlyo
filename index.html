@@ -123,13 +123,18 @@
       <div class="nav-links">
         <button class="nav-link" data-action="symptoms">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          Symptom Check
+          <span data-i18n="nav.symptoms">Symptom Check</span>
         </button>
         <button class="nav-link" data-action="sitter-portal">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          For Sitters
+          <span data-i18n="nav.sitters">For Sitters</span>
         </button>
-        <button class="btn btn-primary" data-action="start">Get started</button>
+        <div class="lang-switcher" id="lang-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+        <button class="btn btn-primary" data-action="start" data-i18n="nav.cta">Get started</button>
       </div>
     </div>
   </nav>
@@ -150,13 +155,13 @@
       <div class="hero-content">
         <div class="hero-label">
           <span class="hero-label-dot"></span>
-          AI-powered pet matching
+          <span data-i18n="hero.label">AI-powered pet matching</span>
         </div>
-        <h1>Find the perfect sitter for your pet's unique personality</h1>
-        <p>Answer a few questions about your pet and we'll match them with sitters who genuinely understand their needs — no guesswork, no generic searches.</p>
+        <h1 data-i18n="hero.title">Find the perfect sitter for your pet's unique personality</h1>
+        <p data-i18n="hero.sub">Answer a few questions about your pet and we'll match them with sitters who genuinely understand their needs — no guesswork, no generic searches.</p>
         <div class="hero-cta">
-          <button class="btn btn-primary btn-lg" data-action="start">🐾 Match my pet</button>
-          <button class="btn btn-ghost btn-lg" data-action="demo">▶ See how it works</button>
+          <button class="btn btn-primary btn-lg" data-action="start">🐾 <span data-i18n="hero.cta">Match my pet</span></button>
+          <button class="btn btn-ghost btn-lg" data-action="demo">▶ <span data-i18n="hero.demo">See how it works</span></button>
         </div>
         <div class="species-showcase" aria-label="Species we support">
           <span class="species-pill"><span class="species-pill-emoji">🐕</span> Dogs</span>
@@ -172,7 +177,7 @@
             <div class="proof-avatar">ET</div>
             <div class="proof-avatar">DC</div>
           </div>
-          <span>Trusted by <strong>2,400+ pet owners</strong> · 140+ verified sitters</span>
+          <span data-i18n="hero.proof">Trusted by 2,400+ pet owners · 140+ verified sitters</span>
         </div>
       </div>
 
@@ -222,19 +227,19 @@
     <div class="stats-grid">
       <div class="stat-item">
         <div class="stat-value">2,400<span>+</span></div>
-        <div class="stat-label">Pets matched</div>
+        <div class="stat-label" data-i18n="stats.pets">Pets matched</div>
       </div>
       <div class="stat-item">
         <div class="stat-value">140<span>+</span></div>
-        <div class="stat-label">Verified sitters</div>
+        <div class="stat-label" data-i18n="stats.sitters">Verified sitters</div>
       </div>
       <div class="stat-item">
         <div class="stat-value">96<span>%</span></div>
-        <div class="stat-label">Owner satisfaction</div>
+        <div class="stat-label" data-i18n="stats.satisfaction">Owner satisfaction</div>
       </div>
       <div class="stat-item">
         <div class="stat-value">4.9<span>★</span></div>
-        <div class="stat-label">Average rating</div>
+        <div class="stat-label" data-i18n="stats.rating">Average rating</div>
       </div>
     </div>
   </section>
@@ -242,29 +247,29 @@
   <!-- How it Works -->
   <section class="section section-alt">
     <div class="container">
-      <div class="section-label">The process</div>
-      <h2 class="section-title">Four steps to the perfect match</h2>
-      <p class="section-sub">We take the guesswork out of finding a sitter — because every pet is different.</p>
+      <div class="section-label" data-i18n="how.label">The process</div>
+      <h2 class="section-title" data-i18n="how.title">Four steps to the perfect match</h2>
+      <p class="section-sub" data-i18n="how.sub">We take the guesswork out of finding a sitter — because every pet is different.</p>
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-number">1</div>
-          <h3>Tell us about your pet</h3>
-          <p>Name, species, personality traits, and the environment they do best in.</p>
+          <h3 data-i18n="how.s1.title">Tell us about your pet</h3>
+          <p data-i18n="how.s1.desc">Name, species, personality traits, and the environment they do best in.</p>
         </div>
         <div class="step-card">
           <div class="step-number">2</div>
-          <h3>We analyse the match</h3>
-          <p>Our algorithm scores every sitter against your pet's specific needs and temperament.</p>
+          <h3 data-i18n="how.s2.title">We analyse the match</h3>
+          <p data-i18n="how.s2.desc">Our algorithm scores every sitter against your pet's specific needs and temperament.</p>
         </div>
         <div class="step-card">
           <div class="step-number">3</div>
-          <h3>Review your top sitters</h3>
-          <p>See ranked results with a compatibility score and a clear reason for each match.</p>
+          <h3 data-i18n="how.s3.title">Review your top sitters</h3>
+          <p data-i18n="how.s3.desc">See ranked results with a compatibility score and a clear reason for each match.</p>
         </div>
         <div class="step-card">
           <div class="step-number">4</div>
-          <h3>Book with confidence</h3>
-          <p>Read their full profile, check the compatibility breakdown, and reach out directly.</p>
+          <h3 data-i18n="how.s4.title">Book with confidence</h3>
+          <p data-i18n="how.s4.desc">Read their full profile, check the compatibility breakdown, and reach out directly.</p>
         </div>
       </div>
     </div>
@@ -273,29 +278,29 @@
   <!-- Features -->
   <section class="section">
     <div class="container">
-      <div class="section-label">Why Petlyo</div>
-      <h2 class="section-title">Built around your pet, not a search box</h2>
-      <p class="section-sub">Generic pet-sitting platforms don't account for personality. We do.</p>
+      <div class="section-label" data-i18n="feat.label">Why Petlyo</div>
+      <h2 class="section-title" data-i18n="feat.title">Built around your pet, not a search box</h2>
+      <p class="section-sub" data-i18n="feat.sub">Generic pet-sitting platforms don't account for personality. We do.</p>
       <div class="features-grid">
         <div class="feature-card">
           <span class="feature-icon">🐾</span>
-          <h3>Personality-first matching</h3>
-          <p>Our algorithm weighs traits like anxiety, energy level, and trauma history — not just location and price.</p>
+          <h3 data-i18n="feat.1.title">Personality-first matching</h3>
+          <p data-i18n="feat.1.desc">Our algorithm weighs traits like anxiety, energy level, and trauma history — not just location and price.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🐕‍🦺</span>
-          <h3>Verified sitters</h3>
-          <p>Every sitter is vetted for experience, reviewed by owners, and assessed for specialist capability.</p>
+          <h3 data-i18n="feat.2.title">Verified sitters</h3>
+          <p data-i18n="feat.2.desc">Every sitter is vetted for experience, reviewed by owners, and assessed for specialist capability.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🐱</span>
-          <h3>Compatibility breakdown</h3>
-          <p>See exactly why a sitter was matched — environment fit, energy match, routine alignment, and experience.</p>
+          <h3 data-i18n="feat.3.title">Compatibility breakdown</h3>
+          <p data-i18n="feat.3.desc">See exactly why a sitter was matched — environment fit, energy match, routine alignment, and experience.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🏡</span>
-          <h3>Peace of mind</h3>
-          <p>We match your pet with sitters who have been there before — whether that's separation anxiety or senior care.</p>
+          <h3 data-i18n="feat.4.title">Peace of mind</h3>
+          <p data-i18n="feat.4.desc">We match your pet with sitters who have been there before — whether that's separation anxiety or senior care.</p>
         </div>
       </div>
     </div>
@@ -304,13 +309,13 @@
   <!-- Testimonials -->
   <section class="section testimonials-section">
     <div class="container">
-      <div class="section-label">What owners say</div>
-      <h2 class="section-title">Real pets. Real matches.</h2>
-      <p class="section-sub">Over 2,400 matches made — here's what owners have to say.</p>
+      <div class="section-label" data-i18n="test.label">What owners say</div>
+      <h2 class="section-title" data-i18n="test.title">Real pets. Real matches.</h2>
+      <p class="section-sub" data-i18n="test.sub">Over 2,400 matches made — here's what owners have to say.</p>
       <div class="testimonials-grid">
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">"Petlyo matched Biscuit with the most patient sitter. She understood his separation anxiety from day one — no adjustment period needed at all."</p>
+          <p class="testimonial-quote" data-i18n="test.1.quote">"Petlyo matched Biscuit with the most patient sitter. She understood his separation anxiety from day one — no adjustment period needed at all."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar" style="background:#F59E0B">JL</div>
             <div>
@@ -321,7 +326,7 @@
         </div>
         <div class="testimonial-card testimonial-featured">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">"Our rescue cat has trauma triggers. The AI insight described her perfectly — the sitter we found was the right fit before the very first visit."</p>
+          <p class="testimonial-quote" data-i18n="test.2.quote">"Our rescue cat has trauma triggers. The AI insight described her perfectly — the sitter we found was the right fit before the very first visit."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar" style="background:#8B5CF6">AK</div>
             <div>
@@ -332,7 +337,7 @@
         </div>
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">"The compatibility breakdown told us exactly why each sitter was ranked. That level of transparency is something no other platform comes close to."</p>
+          <p class="testimonial-quote" data-i18n="test.3.quote">"The compatibility breakdown told us exactly why each sitter was ranked. That level of transparency is something no other platform comes close to."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar" style="background:#EF4444">RN</div>
             <div>
@@ -348,9 +353,9 @@
   <!-- CTA Banner -->
   <section class="section cta-banner-section">
     <div class="container text-center">
-      <h2 class="section-title">Ready to find the right match?</h2>
-      <p class="section-sub">It takes about 3 minutes. No account needed.</p>
-      <button class="btn btn-primary btn-lg" data-action="start">Match my pet →</button>
+      <h2 class="section-title" data-i18n="cta.title">Ready to find the right match?</h2>
+      <p class="section-sub" data-i18n="cta.sub">It takes about 3 minutes. No account needed.</p>
+      <button class="btn btn-primary btn-lg" data-action="start" data-i18n="cta.btn">Match my pet →</button>
     </div>
   </section>
 
@@ -1246,5 +1251,6 @@
 <script src="js/app.js"></script>
 <script src="js/features.js?v=3"></script>
 <script src="js/chat.js?v=3"></script>
+<script src="js/i18n.js"></script>
 </body>
 </html>

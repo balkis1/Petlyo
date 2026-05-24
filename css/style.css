@@ -956,6 +956,34 @@ a { color: var(--green); text-decoration: none; }
   color: var(--text);
 }
 
+/* ── Language Switcher ──────────────────────────────────────────────── */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+.lang-btn {
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 10px;
+  transition: color 0.15s;
+  letter-spacing: 0.04em;
+}
+.lang-btn.active {
+  color: var(--green);
+}
+.lang-btn:hover:not(.active) { color: var(--text-1); }
+.lang-divider { color: var(--border); font-size: 12px; }
+
 .footer-contact {
   display: flex;
   align-items: center;
