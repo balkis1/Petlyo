@@ -1,9 +1,9 @@
 // ─── Petlyo AI Chat — LangChain agent backend ────────────────────────────────
 
 const Chat = (() => {
-  const BACKEND = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  const BACKEND = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:8000'
-    : 'https://petlyo-api.onrender.com';
+    : '/api';
   let isOpen      = false;
   let chatHistory = [];
 

@@ -1,8 +1,8 @@
 // ── Petlyo — New Features: Symptom Checker, Pet Passport, Sitter Portal, Live Stay ──
 
-const BACKEND = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+const BACKEND = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
   ? 'http://localhost:8000'
-  : 'https://petlyo-api.onrender.com';
+  : '/api';
 
 // ════════════════════════════════════════════════════════
 // SYMPTOM CHECKER
