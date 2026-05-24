@@ -5,6 +5,7 @@ import asyncio
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from mangum import Mangum
 from agent import run_agent, format_history
 
 app = FastAPI()
@@ -37,3 +38,6 @@ async def chat(req: ChatRequest):
         raise HTTPException(status_code=503, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Agent error: {str(e)}")
+
+
+handler = Mangum(app)
