@@ -1,0 +1,42 @@
+import asyncio
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
+from agent import run_agent, format_history
+
+app = FastAPI(title="Petlyo AI Backend")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
+
+
+class ChatRequest(BaseModel):
+    message: str
+    history: list = []
+    pet_data: dict = {}
+    sitters: list = []
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
+@app.post("/chat")
+async def chat(req: ChatRequest):
+    try:
+        history = format_history(req.history[-10:])
+        reply   = await asyncio.to_thread(
+            run_agent, req.pet_data, req.sitters, req.message, history
+        )
+        return {"reply": reply}
+
+    except RuntimeError as e:
+        raise HTTPException(status_code=503, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Agent error: {str(e)}")

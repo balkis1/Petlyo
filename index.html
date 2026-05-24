@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petlyo — AI-powered pet care matching</title>
+  <meta name="description" content="Find the perfect sitter for your pet's unique personality. AI-powered matching based on traits, temperament, and environment needs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=10">
+</head>
+<body>
+<div id="pet-bg" aria-hidden="true">
+  <div class="ab ab-1"></div>
+  <div class="ab ab-2"></div>
+  <div class="ab ab-3"></div>
+
+  <!-- large sitting cat — bottom right -->
+  <div class="cat-deco cd-1">
+    <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor">
+      <ellipse cx="100" cy="168" rx="58" ry="68"/>
+      <ellipse cx="68" cy="228" rx="17" ry="11"/>
+      <ellipse cx="132" cy="228" rx="17" ry="11"/>
+      <path d="M154,195 C174,170 176,138 162,118 C155,108 145,114 148,130 C151,146 146,168 136,188" fill="currentColor" stroke="none"/>
+      <ellipse cx="100" cy="112" rx="34" ry="26"/>
+      <circle cx="100" cy="80" r="50"/>
+      <polygon points="52,48 40,10 70,36"/>
+      <polygon points="148,48 160,10 130,36"/>
+      <polygon points="55,44 46,18 66,34" opacity="0.4"/>
+      <polygon points="145,44 154,18 134,34" opacity="0.4"/>
+      <ellipse cx="82" cy="78" rx="11" ry="13" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="118" cy="78" rx="11" ry="13" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="82" cy="79" rx="6" ry="10" fill="rgba(4,24,16,0.82)"/>
+      <ellipse cx="118" cy="79" rx="6" ry="10" fill="rgba(4,24,16,0.82)"/>
+      <circle cx="79" cy="75" r="2.5" fill="white"/>
+      <circle cx="115" cy="75" r="2.5" fill="white"/>
+      <path d="M93,98 L100,105 L107,98Z" fill="rgba(255,148,176,0.9)"/>
+      <path d="M100,105 C96,110 91,111 88,110" stroke="rgba(255,255,255,0.45)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M100,105 C104,110 109,111 112,110" stroke="rgba(255,255,255,0.45)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <line x1="28" y1="95" x2="76" y2="101" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="26" y1="104" x2="76" y2="104" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="124" y1="101" x2="172" y2="95" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="124" y1="104" x2="174" y2="104" stroke="rgba(255,255,255,0.45)" stroke-width="2" stroke-linecap="round"/>
+    </g></svg>
+  </div>
+
+  <!-- medium cat face — top left -->
+  <div class="cat-deco cd-2">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor">
+      <circle cx="50" cy="58" r="36"/>
+      <polygon points="18,40 10,14 34,30"/>
+      <polygon points="82,40 90,14 66,30"/>
+      <polygon points="20,38 15,20 32,28" opacity="0.35"/>
+      <polygon points="80,38 85,20 68,28" opacity="0.35"/>
+      <ellipse cx="38" cy="56" rx="9" ry="10" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="62" cy="56" rx="9" ry="10" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="38" cy="57" rx="5" ry="8" fill="rgba(4,24,16,0.82)"/>
+      <ellipse cx="62" cy="57" rx="5" ry="8" fill="rgba(4,24,16,0.82)"/>
+      <circle cx="36" cy="53" r="2" fill="white"/>
+      <circle cx="60" cy="53" r="2" fill="white"/>
+      <path d="M45,69 L50,75 L55,69Z" fill="rgba(255,148,176,0.9)"/>
+      <line x1="8"  y1="67" x2="36" y2="71" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="7"  y1="74" x2="36" y2="74" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="64" y1="71" x2="92" y2="67" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="64" y1="74" x2="93" y2="74" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+    </g></svg>
+  </div>
+
+  <!-- small cat face — right middle -->
+  <div class="cat-deco cd-3">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor">
+      <circle cx="50" cy="58" r="36"/>
+      <polygon points="18,40 10,14 34,30"/>
+      <polygon points="82,40 90,14 66,30"/>
+      <polygon points="20,38 15,20 32,28" opacity="0.35"/>
+      <polygon points="80,38 85,20 68,28" opacity="0.35"/>
+      <ellipse cx="38" cy="55" rx="9" ry="11" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="62" cy="55" rx="9" ry="11" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="39" cy="56" rx="5" ry="9" fill="rgba(4,24,16,0.82)"/>
+      <ellipse cx="63" cy="56" rx="5" ry="9" fill="rgba(4,24,16,0.82)"/>
+      <circle cx="37" cy="52" r="2" fill="white"/>
+      <circle cx="61" cy="52" r="2" fill="white"/>
+      <path d="M45,69 L50,75 L55,69Z" fill="rgba(255,148,176,0.9)"/>
+    </g></svg>
+  </div>
+
+  <!-- tiny sitting cat — left middle -->
+  <div class="cat-deco cd-4">
+    <svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor">
+      <ellipse cx="60" cy="103" rx="36" ry="42"/>
+      <ellipse cx="40" cy="140" rx="12" ry="8"/>
+      <ellipse cx="80" cy="140" rx="12" ry="8"/>
+      <path d="M92,120 C106,102 108,80 98,66 C93,59 86,63 88,76 C90,89 87,107 80,120" fill="currentColor"/>
+      <circle cx="60" cy="50" r="34"/>
+      <polygon points="30,30 22,6 44,22"/>
+      <polygon points="90,30 98,6 76,22"/>
+      <polygon points="33,27 27,11 42,21" opacity="0.4"/>
+      <polygon points="87,27 93,11 78,21" opacity="0.4"/>
+      <ellipse cx="48" cy="48" rx="8" ry="9" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="72" cy="48" rx="8" ry="9" fill="rgba(255,255,255,0.88)"/>
+      <ellipse cx="48" cy="49" rx="4.5" ry="7" fill="rgba(4,24,16,0.82)"/>
+      <ellipse cx="72" cy="49" rx="4.5" ry="7" fill="rgba(4,24,16,0.82)"/>
+      <circle cx="46" cy="46" r="1.8" fill="white"/>
+      <circle cx="70" cy="46" r="1.8" fill="white"/>
+      <path d="M55,61 L60,67 L65,61Z" fill="rgba(255,148,176,0.9)"/>
+    </g></svg>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE: LANDING                                                              -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div id="page-landing" class="page active">
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <div class="nav-logo-mark">🐾</div>
+        Petlyo
+      </div>
+      <div class="nav-links">
+        <button class="nav-link" data-action="symptoms">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Symptom Check
+        </button>
+        <button class="nav-link" data-action="sitter-portal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          For Sitters
+        </button>
+        <button class="btn btn-primary" data-action="start">Get started</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <!-- Floating pet decorations -->
+    <div class="hero-pets" aria-hidden="true">
+      <span class="pet-float" style="--x:6%;--y:18%;--d:8s;--r:-20deg;--size:32px">🐾</span>
+      <span class="pet-float" style="--x:91%;--y:12%;--d:10s;--delay:-3s;--r:15deg;--size:36px">🐕</span>
+      <span class="pet-float" style="--x:3%;--y:72%;--d:9s;--delay:-5s;--r:10deg;--size:30px">⭐</span>
+      <span class="pet-float" style="--x:88%;--y:70%;--d:12s;--delay:-2s;--r:-12deg;--size:34px">🐈</span>
+      <span class="pet-float" style="--x:48%;--y:4%;--d:7s;--delay:-1s;--r:5deg;--size:28px">🐾</span>
+      <span class="pet-float" style="--x:75%;--y:40%;--d:11s;--delay:-6s;--r:-8deg;--size:26px">❤️</span>
+      <span class="pet-float" style="--x:18%;--y:85%;--d:8s;--delay:-4s;--r:18deg;--size:30px">🐾</span>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-label">
+          <span class="hero-label-dot"></span>
+          AI-powered pet matching
+        </div>
+        <h1>Find the perfect sitter for your pet's unique personality</h1>
+        <p>Answer a few questions about your pet and we'll match them with sitters who genuinely understand their needs — no guesswork, no generic searches.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg" data-action="start">🐾 Match my pet</button>
+          <button class="btn btn-ghost btn-lg" data-action="demo">▶ See how it works</button>
+        </div>
+        <div class="species-showcase" aria-label="Species we support">
+          <span class="species-pill"><span class="species-pill-emoji">🐕</span> Dogs</span>
+          <span class="species-pill"><span class="species-pill-emoji">🐈</span> Cats</span>
+          <span class="species-pill"><span class="species-pill-emoji">🐰</span> Rabbits</span>
+          <span class="species-pill"><span class="species-pill-emoji">🐦</span> Birds</span>
+          <span class="species-pill"><span class="species-pill-emoji">🦎</span> Reptiles</span>
+        </div>
+        <div class="hero-social-proof">
+          <div class="proof-avatars">
+            <div class="proof-avatar">SL</div>
+            <div class="proof-avatar">MW</div>
+            <div class="proof-avatar">ET</div>
+            <div class="proof-avatar">DC</div>
+          </div>
+          <span>Trusted by <strong>2,400+ pet owners</strong> · 140+ verified sitters</span>
+        </div>
+      </div>
+
+      <!-- Product card preview -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-float-card">
+          <div class="hfc-match-label">
+            <span class="hfc-pulse"></span>
+            Your top match
+          </div>
+          <div class="hfc-sitter-row">
+            <div class="hfc-avatar" style="background:#1D9E75">SL</div>
+            <div class="hfc-info">
+              <div class="hfc-name">Sophie Laurent</div>
+              <div class="hfc-sub">Travis Heights · ★ 4.97</div>
+            </div>
+            <div class="hfc-score">96%</div>
+          </div>
+          <div class="hfc-bars">
+            <div class="hfc-bar-row">
+              <span>Environment fit</span>
+              <div class="hfc-track"><div class="hfc-fill" style="--w:99%"></div></div>
+              <span class="hfc-pct">99%</span>
+            </div>
+            <div class="hfc-bar-row">
+              <span>Routine alignment</span>
+              <div class="hfc-track"><div class="hfc-fill" style="--w:93%"></div></div>
+              <span class="hfc-pct">93%</span>
+            </div>
+            <div class="hfc-bar-row">
+              <span>Energy match</span>
+              <div class="hfc-track"><div class="hfc-fill" style="--w:84%"></div></div>
+              <span class="hfc-pct">84%</span>
+            </div>
+          </div>
+          <div class="hfc-insight-row">
+            <span class="hfc-badge">✦ AI insight</span>
+            <p>Specialist in anxious pets. Home all day. No other animals.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <section class="stats-bar">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-value">2,400<span>+</span></div>
+        <div class="stat-label">Pets matched</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">140<span>+</span></div>
+        <div class="stat-label">Verified sitters</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">96<span>%</span></div>
+        <div class="stat-label">Owner satisfaction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">4.9<span>★</span></div>
+        <div class="stat-label">Average rating</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-label">The process</div>
+      <h2 class="section-title">Four steps to the perfect match</h2>
+      <p class="section-sub">We take the guesswork out of finding a sitter — because every pet is different.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Tell us about your pet</h3>
+          <p>Name, species, personality traits, and the environment they do best in.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>We analyse the match</h3>
+          <p>Our algorithm scores every sitter against your pet's specific needs and temperament.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Review your top sitters</h3>
+          <p>See ranked results with a compatibility score and a clear reason for each match.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Book with confidence</h3>
+          <p>Read their full profile, check the compatibility breakdown, and reach out directly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Why Petlyo</div>
+      <h2 class="section-title">Built around your pet, not a search box</h2>
+      <p class="section-sub">Generic pet-sitting platforms don't account for personality. We do.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🐾</span>
+          <h3>Personality-first matching</h3>
+          <p>Our algorithm weighs traits like anxiety, energy level, and trauma history — not just location and price.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🐕‍🦺</span>
+          <h3>Verified sitters</h3>
+          <p>Every sitter is vetted for experience, reviewed by owners, and assessed for specialist capability.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🐱</span>
+          <h3>Compatibility breakdown</h3>
+          <p>See exactly why a sitter was matched — environment fit, energy match, routine alignment, and experience.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🏡</span>
+          <h3>Peace of mind</h3>
+          <p>We match your pet with sitters who have been there before — whether that's separation anxiety or senior care.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-label">What owners say</div>
+      <h2 class="section-title">Real pets. Real matches.</h2>
+      <p class="section-sub">Over 2,400 matches made — here's what owners have to say.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"Petlyo matched Biscuit with the most patient sitter. She understood his separation anxiety from day one — no adjustment period needed at all."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#F59E0B">JL</div>
+            <div>
+              <div class="testimonial-name">Jamie L.</div>
+              <div class="testimonial-pet">Biscuit · 4yr Labrador</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card testimonial-featured">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"Our rescue cat has trauma triggers. The AI insight described her perfectly — the sitter we found was the right fit before the very first visit."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#8B5CF6">AK</div>
+            <div>
+              <div class="testimonial-name">Alex K.</div>
+              <div class="testimonial-pet">Miso · 2yr rescue cat</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"The compatibility breakdown told us exactly why each sitter was ranked. That level of transparency is something no other platform comes close to."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#EF4444">RN</div>
+            <div>
+              <div class="testimonial-name">Rachel N.</div>
+              <div class="testimonial-pet">Theo & Lily · senior dogs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section cta-banner-section">
+    <div class="container text-center">
+      <h2 class="section-title">Ready to find the right match?</h2>
+      <p class="section-sub">It takes about 3 minutes. No account needed.</p>
+      <button class="btn btn-primary btn-lg" data-action="start">Match my pet →</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer">
+      <span class="footer-logo">🐾 Petlyo</span>
+      <span>© 2026 Petlyo. All rights reserved.</span>
+      <span>Made with care for pets everywhere.</span>
+    </div>
+  </footer>
+
+</div><!-- /page-landing -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE: ONBOARDING                                                           -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div id="page-onboarding" class="page">
+
+  <header class="onboarding-header">
+    <div class="onboarding-header-inner">
+      <button class="onboarding-logo" data-action="home" style="background:none;border:none;cursor:pointer;padding:0;font:inherit">🐾 Petlyo</button>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <span class="step-counter" id="step-counter">Step 1 of 5</span>
+    </div>
+  </header>
+
+  <div class="onboarding-body">
+
+    <!-- Step 1: Pet Basics -->
+    <div id="step-1" class="step-panel active">
+      <h2 class="step-heading">Let's start with the basics</h2>
+      <p class="step-sub">Tell us a little about your pet so we can find the right match.</p>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label class="form-label" for="input-petName">Pet's name <span style="color:var(--green)">*</span></label>
+          <input id="input-petName" class="form-input" type="text" placeholder="e.g. Luna" autocomplete="off">
+        </div>
+
+        <div class="form-grid form-grid-2">
+          <div class="form-row">
+            <label class="form-label" for="input-species">Species <span style="color:var(--green)">*</span></label>
+            <select id="input-species" class="form-select">
+              <option value="">Select species</option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="rabbit">Rabbit</option>
+              <option value="bird">Bird</option>
+              <option value="reptile">Reptile</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="input-breed">Breed <span style="color:var(--muted-light); font-weight:400">(optional)</span></label>
+            <input id="input-breed" class="form-input" type="text" placeholder="e.g. Golden Retriever">
+          </div>
+        </div>
+
+        <div class="form-grid form-grid-2">
+          <div class="form-row">
+            <label class="form-label" for="input-age">Age (years)</label>
+            <input id="input-age" class="form-input" type="number" min="0" max="25" placeholder="e.g. 3">
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="input-city">Your city <span style="color:var(--green)">*</span></label>
+            <input id="input-city" class="form-input" type="text" placeholder="e.g. Austin, TX" autocomplete="off">
+          </div>
+        </div>
+      </div>
+    </div><!-- /step-1 -->
+
+    <!-- Step 2: Personality Traits -->
+    <div id="step-2" class="step-panel">
+      <h2 class="step-heading">How would you describe your pet?</h2>
+      <p class="step-sub">Select all that apply — we use these to find sitters who truly understand your pet.</p>
+
+      <div class="cards-grid">
+        <div class="select-card" data-group="traits" data-value="anxious">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">😰</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Anxious</div>
+          <div class="card-desc">Gets stressed in new situations or environments</div>
+        </div>
+
+        <div class="select-card" data-group="traits" data-value="social">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">🐾</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Social</div>
+          <div class="card-desc">Loves meeting other animals and people</div>
+        </div>
+
+        <div class="select-card" data-group="traits" data-value="highEnergy">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">⚡</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">High Energy</div>
+          <div class="card-desc">Needs lots of exercise and stimulation daily</div>
+        </div>
+
+        <div class="select-card" data-group="traits" data-value="shy">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">🌸</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Shy</div>
+          <div class="card-desc">Takes time to warm up to new people and places</div>
+        </div>
+
+        <div class="select-card" data-group="traits" data-value="senior">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">🕰️</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Senior</div>
+          <div class="card-desc">Older pet with a slower pace and gentle needs</div>
+        </div>
+
+        <div class="select-card" data-group="traits" data-value="separationAnxiety">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">💔</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Separation Anxiety</div>
+          <div class="card-desc">Struggles when left alone, needs company</div>
+        </div>
+
+        <div class="select-card" data-group="traits" data-value="rescueTrauma">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">🏠</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Rescue / Trauma</div>
+          <div class="card-desc">Has a difficult past, needs patience and structure</div>
+        </div>
+
+        <div class="select-card" data-group="traits" data-value="playful">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">🎾</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Playful</div>
+          <div class="card-desc">Always up for games, toys, and adventures</div>
+        </div>
+      </div>
+    </div><!-- /step-2 -->
+
+    <!-- Step 3: Environment Needs -->
+    <div id="step-3" class="step-panel">
+      <h2 class="step-heading">What does your pet need in a home?</h2>
+      <p class="step-sub">Select the environment conditions that matter most for your pet's wellbeing.</p>
+
+      <div class="cards-grid">
+        <div class="select-card" data-group="environment" data-value="only pet">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">🐕</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Only Pet</div>
+          <div class="card-desc">Best as the only animal in the home</div>
+        </div>
+
+        <div class="select-card" data-group="environment" data-value="garden access">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">🌿</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Garden Access</div>
+          <div class="card-desc">Needs access to outdoor space to run and explore</div>
+        </div>
+
+        <div class="select-card" data-group="environment" data-value="calm/quiet">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">🤫</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Calm &amp; Quiet</div>
+          <div class="card-desc">Sensitive to noise, activity, and busy environments</div>
+        </div>
+
+        <div class="select-card" data-group="environment" data-value="sitter home all day">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">🏡</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Sitter Home All Day</div>
+          <div class="card-desc">Needs constant company and supervision throughout the day</div>
+        </div>
+
+        <div class="select-card" data-group="environment" data-value="dog-friendly">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">🐶</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">Dog-Friendly</div>
+          <div class="card-desc">Does well around other dogs in the home</div>
+        </div>
+
+        <div class="select-card" data-group="environment" data-value="no small children">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="card-emoji">👶</span>
+            <div class="card-check"></div>
+          </div>
+          <div class="card-title">No Small Children</div>
+          <div class="card-desc">More comfortable in an adult-only household</div>
+        </div>
+      </div>
+    </div><!-- /step-3 -->
+
+    <!-- Step 4: Routine & Dates -->
+    <div id="step-4" class="step-panel">
+      <h2 class="step-heading">Routine &amp; stay details</h2>
+      <p class="step-sub">Help your sitter understand what a normal day looks like for your pet.</p>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label class="form-label" for="input-feeding">Feeding schedule</label>
+          <select id="input-feeding" class="form-select">
+            <option value="">Select schedule</option>
+            <option value="2x daily">Twice daily (morning &amp; evening)</option>
+            <option value="3x daily">Three times daily</option>
+            <option value="free feed">Free feed (bowl always available)</option>
+            <option value="special diet">Special / prescription diet</option>
+            <option value="raw diet">Raw diet</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="input-exercise">Exercise needs</label>
+          <input id="input-exercise" class="form-input" type="text" placeholder="e.g. 2 walks per day, 30 min each">
+          <span class="routine-hint">Be as specific as you like</span>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="input-medication">Medication or medical needs</label>
+          <input id="input-medication" class="form-input" type="text" placeholder="e.g. Daily allergy tablet at 8am, or 'None'">
+        </div>
+
+        <div class="form-grid form-grid-2">
+          <div class="form-row">
+            <label class="form-label" for="input-stayStart">Stay start date</label>
+            <input id="input-stayStart" class="form-input" type="date">
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="input-stayEnd">Stay end date</label>
+            <input id="input-stayEnd" class="form-input" type="date">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="input-notes">Any extra notes for your sitter?</label>
+          <textarea id="input-notes" class="form-textarea" placeholder="e.g. Luna doesn't like loud music, she has a favourite blanket she'll need, she needs the light left on at night..."></textarea>
+        </div>
+      </div>
+    </div><!-- /step-4 -->
+
+    <!-- Step 5: Owner Details -->
+    <div id="step-5" class="step-panel">
+      <h2 class="step-heading">Almost there — just your details</h2>
+      <p class="step-sub">We'll use this to send you your match results. No spam, ever.</p>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label class="form-label" for="input-ownerName">Your name <span style="color:var(--green)">*</span></label>
+          <input id="input-ownerName" class="form-input" type="text" placeholder="e.g. Alex Johnson" autocomplete="name">
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="input-ownerEmail">Email address <span style="color:var(--green)">*</span></label>
+          <input id="input-ownerEmail" class="form-input" type="email" placeholder="e.g. alex@example.com" autocomplete="email">
+        </div>
+
+        <div class="privacy-box">
+          <span class="privacy-box-icon">🔒</span>
+          <div>
+            <div class="privacy-box-title">Your data is safe</div>
+            <div class="privacy-box-desc">We only use your details to connect you with sitters. We never sell your data or share it without your consent.</div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /step-5 -->
+
+  </div><!-- /onboarding-body -->
+
+  <footer class="onboarding-footer">
+    <div class="onboarding-footer-inner">
+      <button class="btn btn-ghost" id="btn-prev">← Back</button>
+      <button class="btn btn-primary" id="btn-next">Continue</button>
+    </div>
+  </footer>
+
+</div><!-- /page-onboarding -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE: MATCHING                                                             -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div id="page-matching" class="page">
+  <div class="matching-scene">
+    <div class="matching-orb matching-orb-1"></div>
+    <div class="matching-orb matching-orb-2"></div>
+    <div class="matching-box">
+      <div class="spinner-wrap">
+        <div class="spinner-ring spinner-ring-outer"></div>
+        <div class="spinner-ring spinner-ring-inner"></div>
+        <div class="spinner-center">🐾</div>
+      </div>
+      <h2 class="matching-title">Finding the perfect match</h2>
+      <p class="matching-sub">Analysing your pet's profile against 140+ sitters…</p>
+      <ul class="match-steps-list" id="match-steps-list"></ul>
+    </div>
+  </div>
+</div><!-- /page-matching -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE: RESULTS                                                              -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div id="page-results" class="page">
+
+  <header class="results-header">
+    <div class="results-header-inner">
+      <button class="nav-logo" style="font-size:18px;background:none;border:none;cursor:pointer" data-action="home">🐾 Petlyo</button>
+      <div class="results-actions">
+        <button class="btn btn-ghost" id="btn-passport" style="padding:8px 16px;font-size:14px">🪪 Pet Passport</button>
+        <button class="btn btn-ghost" id="btn-live-stay" style="padding:8px 16px;font-size:14px">📡 Live Updates</button>
+        <button class="btn btn-ghost" id="btn-refine" style="padding:8px 16px;font-size:14px">Refine</button>
+        <button class="btn btn-ghost" id="btn-start-over" style="padding:8px 16px;font-size:14px">Start over</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Demo banner -->
+  <div class="demo-banner" id="demo-banner" style="display:none">
+    <span>👀 This is a demo — results shown for <strong>Luna</strong>, an anxious rescue cat.</span>
+    <button class="btn btn-primary" data-action="start" style="padding:8px 18px;font-size:13px">Try with your pet →</button>
+  </div>
+
+  <!-- Pet Banner -->
+  <div class="pet-banner">
+    <div class="pet-banner-inner">
+      <div class="pet-avatar" id="results-pet-avatar">🐾</div>
+      <div class="pet-banner-info">
+        <h2 id="results-pet-name">Your pet</h2>
+        <div class="pet-meta">
+          <span class="species-badge" id="results-species"></span>
+          <span id="results-pet-city"></span>
+        </div>
+        <div class="tags-row" id="results-trait-tags"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Insight -->
+  <div class="insight-section">
+    <div class="insight-box">
+      <div class="insight-label">
+        <span>✦</span> AI Match Insight
+      </div>
+      <p class="insight-text" id="results-insight">Generating your personalised insight…</p>
+    </div>
+  </div>
+
+  <!-- Sitter Cards -->
+  <div class="results-cards-section">
+    <p class="results-section-title">Your top 3 matches</p>
+    <div id="results-cards"></div>
+  </div>
+
+</div><!-- /page-results -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE: SITTER DETAIL                                                        -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div id="page-sitter" class="page">
+
+  <header class="sitter-detail-header">
+    <div class="sitter-detail-header-inner">
+      <button class="btn-back" id="btn-back-to-results">← Back to results</button>
+      <button class="nav-logo" style="font-size:18px;margin-left:auto;background:none;border:none;cursor:pointer" data-action="home">🐾 Petlyo</button>
+    </div>
+  </header>
+
+  <div class="detail-body">
+
+    <div class="sitter-hero">
+      <div class="sitter-hero-top">
+        <div class="sitter-avatar-lg" id="sitter-avatar">SL</div>
+        <div class="sitter-hero-info">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <h2 id="sitter-name">Sitter Name</h2>
+            <div id="detail-match-badge" class="sitter-match-badge" style="display:none">
+              <span id="detail-match-score">—</span>
+              <span class="score-sublabel">match</span>
+            </div>
+          </div>
+          <div class="sitter-hero-meta">
+            <span>📍 <span id="sitter-location"></span></span>
+            <span>⭐ <span id="sitter-rating"></span></span>
+            <span>🏠 <span id="sitter-stays"></span></span>
+          </div>
+          <div id="detail-specialties" class="specialty-tags"></div>
+        </div>
+      </div>
+      <p class="sitter-bio" id="sitter-bio"></p>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-card-title">🏡 Home &amp; Environment</div>
+      <div class="fact-grid">
+        <div class="fact-item">
+          <div class="fact-label">Environment type</div>
+          <div class="fact-value" id="detail-env-type">—</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-label">Other pets</div>
+          <div class="fact-value" id="detail-other-pets">—</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-label">Home all day</div>
+          <div class="fact-value" id="detail-home-all-day">—</div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-label">Years experience</div>
+          <div class="fact-value" id="detail-experience">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-card">
+      <div class="detail-card-title">📊 Compatibility Breakdown</div>
+      <div class="compat-bars">
+
+        <div class="compat-row">
+          <div class="compat-row-header">
+            <span class="compat-label">Environment fit</span>
+            <span class="compat-pct" id="bar-environment-pct">—</span>
+          </div>
+          <div class="compat-track">
+            <div class="compat-bar-fill" id="bar-environment" data-target="0"></div>
+          </div>
+        </div>
+
+        <div class="compat-row">
+          <div class="compat-row-header">
+            <span class="compat-label">Energy match</span>
+            <span class="compat-pct" id="bar-energy-pct">—</span>
+          </div>
+          <div class="compat-track">
+            <div class="compat-bar-fill" id="bar-energy" data-target="0"></div>
+          </div>
+        </div>
+
+        <div class="compat-row">
+          <div class="compat-row-header">
+            <span class="compat-label">Routine alignment</span>
+            <span class="compat-pct" id="bar-routine-pct">—</span>
+          </div>
+          <div class="compat-track">
+            <div class="compat-bar-fill" id="bar-routine" data-target="0"></div>
+          </div>
+        </div>
+
+        <div class="compat-row">
+          <div class="compat-row-header">
+            <span class="compat-label">Experience with type</span>
+            <span class="compat-pct" id="bar-experience-pct">—</span>
+          </div>
+          <div class="compat-track">
+            <div class="compat-bar-fill" id="bar-experience" data-target="0"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cta-card">
+      <h3>Ready to book with this sitter?</h3>
+      <p>Send them a message and they'll respond within 24 hours to confirm availability for your dates.</p>
+      <button class="btn btn-primary btn-lg" id="btn-request-stay">Request a stay →</button>
+    </div>
+
+  </div><!-- /detail-body -->
+
+</div><!-- /page-sitter -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE: SYMPTOM CHECKER                                                       -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div id="page-symptoms" class="page">
+  <header class="inner-header">
+    <div class="inner-header-inner">
+      <button class="btn-back" data-action="home">← Back</button>
+      <span class="inner-header-logo">🐾 Petlyo</span>
+      <div style="width:80px"></div>
+    </div>
+  </header>
+
+  <div class="symptom-page">
+    <div class="symptom-hero">
+      <div class="symptom-icon">🩺</div>
+      <h1 class="symptom-title">Is My Pet OK?</h1>
+      <p class="symptom-subtitle">Describe what you're seeing — our AI gives instant, personalised advice based on your pet's species, breed, and age. Free, no sign-up needed.</p>
+    </div>
+
+    <div class="symptom-form-wrap">
+      <form id="symptom-form" class="symptom-form">
+        <div class="sym-row">
+          <div class="sym-field">
+            <label class="sym-label">Species</label>
+            <select id="sym-species" class="sym-input" required>
+              <option value="">Select species</option>
+              <option>Cat</option><option>Dog</option><option>Rabbit</option>
+              <option>Bird</option><option>Reptile</option><option>Other</option>
+            </select>
+          </div>
+          <div class="sym-field">
+            <label class="sym-label">Breed <span style="opacity:.5">(optional)</span></label>
+            <input id="sym-breed" class="sym-input" type="text" placeholder="e.g. Golden Retriever">
+          </div>
+          <div class="sym-field">
+            <label class="sym-label">Age</label>
+            <input id="sym-age" class="sym-input" type="text" placeholder="e.g. 3 years" required>
+          </div>
+        </div>
+        <div class="sym-field sym-field-full">
+          <label class="sym-label">What symptoms are you noticing?</label>
+          <textarea id="sym-symptoms" class="sym-input sym-textarea" rows="4" placeholder="Describe in detail: e.g. my cat hasn't eaten since yesterday, is hiding under the bed, and sneezed 3 times this morning..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary sym-submit" id="sym-submit">
+          <span id="sym-btn-text">Get instant advice →</span>
+        </button>
+      </form>
+
+      <div id="symptom-result" class="symptom-result" style="display:none">
+        <div id="urgency-badge" class="urgency-badge"></div>
+        <div id="symptom-answer" class="symptom-answer"></div>
+        <button class="btn btn-ghost sym-again" id="sym-again">Check another symptom</button>
+      </div>
+
+      <div class="vet-resources">
+        <div class="vet-resources-title">Need professional help?</div>
+        <div class="vet-resource-links">
+          <a class="vet-resource-card" href="https://www.google.com/maps/search/veterinarian+near+me" target="_blank" rel="noopener">
+            <div class="vrc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="vrc-body">
+              <div class="vrc-name">Find a vet near you</div>
+              <div class="vrc-sub">Search on Google Maps</div>
+            </div>
+            <svg class="vrc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <button class="vet-resource-card" id="btn-vet-chat" type="button">
+            <div class="vrc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <div class="vrc-body">
+              <div class="vrc-name">Chat with a vet online</div>
+              <div class="vrc-sub">AI-assisted · Free · No wait time</div>
+            </div>
+            <div class="vrc-live-dot"></div>
+            <svg class="vrc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <a class="vet-resource-card vet-resource-emergency" id="vet-emergency-link" href="https://www.google.com/maps/search/emergency+vet+near+me" target="_blank" rel="noopener" style="display:none">
+            <div class="vrc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="vrc-body">
+              <div class="vrc-name">Emergency vet near you</div>
+              <div class="vrc-sub">Open 24/7 emergency clinics</div>
+            </div>
+            <svg class="vrc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="symptom-disclaimer">
+      ⚠️ This is AI-generated guidance for informational purposes only. Always consult a licensed veterinarian for medical decisions.
+    </div>
+  </div>
+</div><!-- /page-symptoms -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- PAGE: SITTER PORTAL                                                         -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div id="page-sitter-portal" class="page">
+  <header class="inner-header">
+    <div class="inner-header-inner">
+      <button class="btn-back" data-action="home">← Back</button>
+      <span class="inner-header-logo">🐾 Petlyo</span>
+      <div style="width:80px"></div>
+    </div>
+  </header>
+
+  <div class="portal-page">
+    <div class="portal-hero">
+      <div class="portal-icon">🏡</div>
+      <h1 class="portal-title">Become a Petlyo Sitter</h1>
+      <p class="portal-subtitle">Join 140+ verified sitters. Get matched with pets that fit your lifestyle, experience, and home — not random requests.</p>
+      <div class="portal-perks">
+        <div class="portal-perk"><span>🤖</span><span>AI matches you to compatible pets</span></div>
+        <div class="portal-perk"><span>📅</span><span>You set your own availability</span></div>
+        <div class="portal-perk"><span>⭐</span><span>Build your reputation with reviews</span></div>
+        <div class="portal-perk"><span>💰</span><span>Set your own rates</span></div>
+      </div>
+    </div>
+
+    <div id="portal-form-wrap" class="portal-form-wrap">
+      <h2 class="portal-form-title">Create your sitter profile</h2>
+      <form id="portal-form" class="portal-form">
+        <div class="sym-row">
+          <div class="sym-field">
+            <label class="sym-label">Full name</label>
+            <input class="sym-input" id="p-name" type="text" placeholder="Sophie Laurent" required>
+          </div>
+          <div class="sym-field">
+            <label class="sym-label">City</label>
+            <input class="sym-input" id="p-city" type="text" placeholder="Paris" required>
+          </div>
+        </div>
+        <div class="sym-row">
+          <div class="sym-field">
+            <label class="sym-label">Years of experience</label>
+            <select class="sym-input" id="p-exp" required>
+              <option value="">Select</option>
+              <option>Less than 1 year</option><option>1–2 years</option>
+              <option>3–5 years</option><option>5–10 years</option><option>10+ years</option>
+            </select>
+          </div>
+          <div class="sym-field">
+            <label class="sym-label">Home type</label>
+            <select class="sym-input" id="p-home" required>
+              <option value="">Select</option>
+              <option>Apartment</option><option>House</option>
+              <option>House with garden</option><option>Farm / large property</option>
+            </select>
+          </div>
+        </div>
+        <div class="sym-row">
+          <div class="sym-field">
+            <label class="sym-label">Rate per day (€)</label>
+            <div class="rate-input-wrap">
+              <span class="rate-currency">€</span>
+              <input class="sym-input rate-input" id="p-rate" type="number" min="5" max="500" placeholder="35" required>
+              <span class="rate-unit">/day</span>
+            </div>
+          </div>
+          <div class="sym-field">
+            <label class="sym-label">Home all day?</label>
+            <select class="sym-input" id="p-presence" required>
+              <option value="">Select</option>
+              <option value="yes">Yes — I work from home</option>
+              <option value="mostly">Mostly — back by early afternoon</option>
+              <option value="no">No — I'm away most of the day</option>
+            </select>
+          </div>
+        </div>
+        <div class="sym-field sym-field-full">
+          <label class="sym-label">Availability <span style="opacity:.5">(select your available days)</span></label>
+          <div class="availability-picker" id="availability-picker">
+            <button type="button" class="avail-chip" data-day="Mon">Mon</button>
+            <button type="button" class="avail-chip" data-day="Tue">Tue</button>
+            <button type="button" class="avail-chip" data-day="Wed">Wed</button>
+            <button type="button" class="avail-chip" data-day="Thu">Thu</button>
+            <button type="button" class="avail-chip" data-day="Fri">Fri</button>
+            <button type="button" class="avail-chip" data-day="Sat">Sat</button>
+            <button type="button" class="avail-chip" data-day="Sun">Sun</button>
+          </div>
+        </div>
+        <div class="sym-field sym-field-full">
+          <label class="sym-label">Pet specialties <span style="opacity:.5">(select all that apply)</span></label>
+          <div class="specialty-picker" id="specialty-picker">
+            <button type="button" class="spec-chip" data-val="Dogs">🐕 Dogs</button>
+            <button type="button" class="spec-chip" data-val="Cats">🐈 Cats</button>
+            <button type="button" class="spec-chip" data-val="Senior pets">🐾 Senior pets</button>
+            <button type="button" class="spec-chip" data-val="Anxious pets">💚 Anxious pets</button>
+            <button type="button" class="spec-chip" data-val="Puppies & kittens">🐣 Puppies & kittens</button>
+            <button type="button" class="spec-chip" data-val="Large breeds">🦴 Large breeds</button>
+            <button type="button" class="spec-chip" data-val="Rabbits">🐰 Rabbits</button>
+            <button type="button" class="spec-chip" data-val="Birds">🦜 Birds</button>
+          </div>
+        </div>
+        <div class="sym-field sym-field-full">
+          <label class="sym-label">About you <span style="opacity:.5">(tell pet owners about yourself)</span></label>
+          <textarea class="sym-input sym-textarea" id="p-bio" rows="3" placeholder="I've loved animals my whole life. I treat every pet like my own..."></textarea>
+        </div>
+        <div class="sym-row">
+          <div class="sym-field">
+            <label class="sym-label">Email</label>
+            <input class="sym-input" id="p-email" type="email" placeholder="you@email.com" required>
+          </div>
+          <div class="sym-field">
+            <label class="sym-label">Phone</label>
+            <input class="sym-input" id="p-phone" type="tel" placeholder="+33 6 12 34 56 78">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary sym-submit">Apply to join →</button>
+      </form>
+    </div>
+
+    <div id="portal-success" class="portal-success" style="display:none">
+      <div class="success-icon">🎉</div>
+      <h2>Application received!</h2>
+      <p>We'll review your profile and get back to you within 48 hours. Welcome to the Petlyo family!</p>
+      <button class="btn btn-primary" data-action="home">Back to Petlyo</button>
+    </div>
+  </div>
+</div><!-- /page-sitter-portal -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- MODAL: PET PASSPORT                                                         -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div id="modal-passport" class="modal-overlay" style="display:none">
+  <div class="passport-modal">
+    <button class="passport-close" id="passport-close">✕</button>
+    <div class="passport-card">
+      <div class="passport-header">
+        <div class="passport-logo">🐾 Petlyo</div>
+        <div class="passport-badge">PET PASSPORT</div>
+      </div>
+      <div class="passport-avatar-row">
+        <div class="passport-avatar" id="pp-avatar">🐾</div>
+        <div class="passport-id">
+          <h2 id="pp-name" class="passport-name">—</h2>
+          <div class="passport-meta">
+            <span id="pp-species">—</span> · <span id="pp-breed">—</span> · <span id="pp-age">—</span>
+          </div>
+          <div class="passport-city">📍 <span id="pp-city">—</span></div>
+        </div>
+      </div>
+      <div class="passport-section">
+        <div class="passport-section-title">Personality</div>
+        <div id="pp-traits" class="passport-tags"></div>
+      </div>
+      <div class="passport-section">
+        <div class="passport-section-title">Care Guide</div>
+        <div class="passport-care-grid">
+          <div class="passport-care-item"><span class="pci-icon">🍽️</span><span class="pci-label">Feeding</span><span id="pp-feeding" class="pci-val">—</span></div>
+          <div class="passport-care-item"><span class="pci-icon">🏃</span><span class="pci-label">Exercise</span><span id="pp-exercise" class="pci-val">—</span></div>
+          <div class="passport-care-item"><span class="pci-icon">💊</span><span class="pci-label">Medication</span><span id="pp-medication" class="pci-val">—</span></div>
+          <div class="passport-care-item"><span class="pci-icon">🏠</span><span class="pci-label">Environment</span><span id="pp-env" class="pci-val">—</span></div>
+        </div>
+      </div>
+      <div class="passport-section" id="pp-notes-section" style="display:none">
+        <div class="passport-section-title">Notes for sitter</div>
+        <p id="pp-notes" class="passport-notes"></p>
+      </div>
+      <div class="passport-footer">
+        <div class="passport-number" id="pp-number">PET-000000</div>
+        <div class="passport-actions">
+          <button class="btn btn-ghost passport-btn" id="pp-copy">🔗 Copy link</button>
+          <button class="btn btn-primary passport-btn" id="pp-share">Share passport</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- MODAL: LIVE STAY UPDATES                                                    -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div id="modal-stay" class="modal-overlay" style="display:none">
+  <div class="stay-modal">
+    <div class="stay-modal-header">
+      <div>
+        <h2 class="stay-modal-title">🐾 Live Stay Updates</h2>
+        <p class="stay-modal-sub" id="stay-subtitle">Luna is with Sophie · Day 2 of 5</p>
+      </div>
+      <button class="passport-close" id="stay-close">✕</button>
+    </div>
+
+    <div class="stay-report" id="stay-report">
+      <div class="stay-report-label">✦ AI Daily Report</div>
+      <p id="stay-report-text" class="stay-report-text">Generating report…</p>
+    </div>
+
+    <div class="stay-mood-row">
+      <div class="stay-mood-label">Today's mood</div>
+      <div class="stay-moods" id="stay-moods">
+        <button class="mood-chip active" data-mood="😊">😊 Happy</button>
+        <button class="mood-chip" data-mood="😌">😌 Calm</button>
+        <button class="mood-chip" data-mood="😟">😟 Anxious</button>
+        <button class="mood-chip" data-mood="🎉">🎉 Playful</button>
+      </div>
+    </div>
+
+    <div class="stay-timeline" id="stay-timeline"></div>
+
+    <button class="btn btn-primary stay-checkin-btn" id="btn-checkin">
+      📸 Request check-in from sitter
+    </button>
+  </div>
+</div>
+
+
+<!-- ── Floating AI Chat ─────────────────────────────────────────────────── -->
+<button class="chat-bubble" id="chat-bubble" aria-label="Open AI chat">
+  <span class="chat-bubble-icon">💬</span>
+  <span class="chat-bubble-label">Ask AI</span>
+</button>
+
+<div class="chat-panel" id="chat-panel" role="dialog" aria-label="Petlyo AI chat">
+  <div class="chat-header">
+    <div class="chat-header-left">
+      <div class="chat-avatar-sm">🐾</div>
+      <div>
+        <div class="chat-title">Petlyo AI</div>
+        <div class="chat-subtitle">Pet care assistant</div>
+      </div>
+    </div>
+    <button class="chat-close" id="chat-close" aria-label="Close chat">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chat-input" placeholder="Ask anything…" autocomplete="off" disabled>
+    <button class="chat-send-btn" id="chat-send" disabled>→</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Request Modal -->
+<div class="modal-overlay" id="modal-request" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div class="modal-icon">🐾</div>
+    <h3 id="modal-title">Request sent!</h3>
+    <p id="modal-body">Your stay request has been sent. <strong id="modal-sitter-name">Your sitter</strong> will respond within 24 hours to confirm availability for your dates.</p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="modal-close-btn">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<!-- MODAL: VET CHAT                                                            -->
+<!-- ══════════════════════════════════════════════════════════════════════════ -->
+<div id="modal-vet-chat" class="modal-overlay" style="display:none">
+  <div class="vet-chat-modal">
+    <div class="vet-chat-header">
+      <div class="vet-chat-header-left">
+        <div class="vet-avatar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div>
+          <div class="vet-chat-name">Dr. Sarah — Petlyo Vet</div>
+          <div class="vet-chat-status"><span class="vet-online-dot"></span>Online now · Free consultation</div>
+        </div>
+      </div>
+      <button class="passport-close" id="vet-chat-close">✕</button>
+    </div>
+    <div class="vet-chat-messages" id="vet-chat-messages">
+      <div class="vet-msg vet-msg-ai">
+        <div class="vet-msg-bubble">Hi! I'm Dr. Sarah 👋 Tell me what's going on with your pet — symptoms, how long it's been happening, and any other details you've noticed. I'm here to help.</div>
+        <div class="vet-msg-time">Just now</div>
+      </div>
+    </div>
+    <div class="vet-chat-input-row">
+      <input class="vet-chat-input" id="vet-chat-input" placeholder="Describe your pet's symptoms…" autocomplete="off">
+      <button class="vet-chat-send" id="vet-chat-send">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/matching.js"></script>
+<script src="js/app.js"></script>
+<script src="js/features.js?v=3"></script>
+<script src="js/chat.js?v=3"></script>
+</body>
+</html>
