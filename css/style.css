@@ -956,6 +956,27 @@ a { color: var(--green); text-decoration: none; }
   color: var(--text);
 }
 
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-contact-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.15s;
+}
+
+.footer-contact-link:hover {
+  color: var(--green);
+}
+
 /* ══════════════════════════════════════════════════════════════════════════════
    ONBOARDING PAGE
 ══════════════════════════════════════════════════════════════════════════════ */
