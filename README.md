@@ -57,13 +57,3 @@ Natural language insight and per-sitter reasons are generated rule-based from th
 - Smooth fade page transitions, animated compatibility bars, hover micro-animations
 - Fully mobile responsive
 
-## Sitters
-
-| Name | City | Speciality |
-|------|------|------------|
-| Sophie Laurent | Austin, TX | Anxious, shy, senior, separation anxiety |
-| Marcus Webb | Denver, CO | High energy, playful, active lifestyle |
-| Emma Thornton | Portland, OR | Rescue & trauma, rehabilitation |
-| David Chen | Seattle, WA | Senior pets, medication, medical needs |
-| Aria Patel | Chicago, IL | Social dogs, high energy, multi-dog |
-| James O'Brien | Nashville, TN | All-rounder, family home, garden |
