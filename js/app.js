@@ -1,3 +1,55 @@
+// ─── Persistence ──────────────────────────────────────────────────────────────
+
+const STORAGE_KEY = 'petlyo_session';
+
+function saveSession() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      petData: state.petData,
+      matchResults: state.matchResults,
+    }));
+  } catch {}
+}
+
+function loadSession() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return false;
+    const saved = JSON.parse(raw);
+    if (!saved.petData?.petName) return false;
+    Object.assign(state.petData, saved.petData);
+    state.matchResults = saved.matchResults || [];
+    return true;
+  } catch {}
+  return false;
+}
+
+function clearSession() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch {}
+}
+
+function restoreFormFields() {
+  const p = state.petData;
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+  set('input-petName', p.petName);
+  set('input-species', p.species);
+  set('input-breed', p.breed);
+  set('input-age', p.age);
+  set('input-city', p.city);
+  set('input-feeding', p.feedingSchedule);
+  set('input-exercise', p.exercise);
+  set('input-medication', p.medication);
+  set('input-stayStart', p.stayStart);
+  set('input-stayEnd', p.stayEnd);
+  set('input-notes', p.extraNotes);
+  set('input-ownerName', p.ownerName);
+  set('input-ownerEmail', p.ownerEmail);
+  document.querySelectorAll('.select-card').forEach(card => {
+    const arr = card.dataset.group === 'traits' ? p.traits : p.environment;
+    if (arr && arr.includes(card.dataset.value)) card.classList.add('selected');
+  });
+}
+
 // ─── State ────────────────────────────────────────────────────────────────────
 
 const state = {
@@ -157,6 +209,7 @@ function initSelectCards() {
       else arr.splice(idx, 1);
     });
   });
+
 }
 
 // ─── Matching Animation ───────────────────────────────────────────────────────
@@ -225,6 +278,7 @@ function runMatchingAnimation() {
 
 function finishMatching() {
   state.matchResults = getTopMatches(state.petData);
+  if (!state.isDemoMode) saveSession();
   renderResults();
   showPage('results');
   const demoBanner = document.getElementById('demo-banner');
@@ -438,6 +492,43 @@ function init() {
   initSelectCards();
   updateProgress(1);
 
+  // Restore previous session
+  if (loadSession()) {
+    restoreFormFields();
+
+    const banner = document.createElement('div');
+    banner.id = 'resume-banner';
+    banner.className = 'resume-banner';
+    banner.innerHTML = `
+      <span class="resume-banner-text">Welcome back! Continue finding a sitter for <strong>${state.petData.petName}</strong>?</span>
+      <div class="resume-banner-actions">
+        <button class="btn btn-primary btn-sm" id="resume-continue">Continue →</button>
+        <button class="btn btn-ghost btn-sm" id="resume-fresh">Start fresh</button>
+      </div>`;
+    document.querySelector('.nav').insertAdjacentElement('afterend', banner);
+
+    document.getElementById('resume-continue').addEventListener('click', () => {
+      banner.style.display = 'none';
+      if (state.matchResults.length) { renderResults(); showPage('results'); }
+      else { goToStep(1); showPage('onboarding'); }
+    });
+
+    document.getElementById('resume-fresh').addEventListener('click', () => {
+      clearSession();
+      banner.style.display = 'none';
+      Object.assign(state.petData, {
+        petName: '', species: '', breed: '', age: '', city: '',
+        traits: [], environment: [],
+        feedingSchedule: '', exercise: '', medication: '',
+        stayStart: '', stayEnd: '', extraNotes: '',
+        ownerName: '', ownerEmail: ''
+      });
+      state.matchResults = [];
+      document.querySelectorAll('.select-card').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('input, select, textarea').forEach(el => { el.value = ''; });
+    });
+  }
+
   // Nav scroll shadow
   const nav = document.querySelector('.nav');
   if (nav) {
@@ -486,6 +577,7 @@ function init() {
   // Back from results
   document.getElementById('btn-start-over').addEventListener('click', () => {
     state.isDemoMode = false;
+    clearSession();
     const demoBanner = document.getElementById('demo-banner');
     if (demoBanner) demoBanner.style.display = 'none';
     Object.assign(state.petData, {
@@ -497,6 +589,8 @@ function init() {
     });
     document.querySelectorAll('.select-card').forEach(c => c.classList.remove('selected'));
     document.querySelectorAll('input, select, textarea').forEach(el => { el.value = ''; });
+    const rb = document.getElementById('resume-banner');
+    if (rb) rb.style.display = 'none';
     showPage('landing');
   });
 

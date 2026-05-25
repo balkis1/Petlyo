@@ -316,86 +316,32 @@ document.querySelectorAll('.mood-chip').forEach(chip => {
   const modal    = document.getElementById('modal-vet-chat');
   const closeBtn = document.getElementById('vet-chat-close');
   const openBtn  = document.getElementById('btn-vet-chat');
-  const input    = document.getElementById('vet-chat-input');
-  const sendBtn  = document.getElementById('vet-chat-send');
-  const messages = document.getElementById('vet-chat-messages');
+  const notifyBtn = document.getElementById('vet-notify-btn');
+  const notifyInput = document.getElementById('vet-notify-email');
+  const notifySuccess = document.getElementById('vet-notify-success');
 
   if (!modal) return;
 
-  const vetHistory = [];
-
-  const VET_SYSTEM = `You are Dr. Sarah, a compassionate and knowledgeable veterinarian on the Petlyo platform.
-You are having a real-time text consultation with a pet owner. Be warm, reassuring, and professional.
-Ask clarifying questions when needed. Give concrete, actionable advice.
-Always recommend seeing a physical vet for anything that requires examination, lab tests, or procedures.
-Keep responses concise — 2 to 4 sentences. Never refuse to engage.`;
-
-  function addMsg(role, text) {
-    const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const div = document.createElement('div');
-    div.className = `vet-msg vet-msg-${role}`;
-    div.innerHTML = `<div class="vet-msg-bubble">${text.replace(/\n/g, '<br>')}</div><div class="vet-msg-time">${now}</div>`;
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
-    return div;
-  }
-
-  function addTyping() {
-    const div = document.createElement('div');
-    div.className = 'vet-msg vet-msg-ai vet-msg-typing';
-    div.innerHTML = '<div class="vet-msg-bubble"><span class="vet-dots"><span></span><span></span><span></span></span></div>';
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
-    return div;
-  }
-
-  async function sendVetMessage() {
-    const text = input.value.trim();
-    if (!text) return;
-    input.value = '';
-    sendBtn.disabled = true;
-
-    addMsg('user', text);
-    vetHistory.push({ role: 'user', content: text });
-
-    const typing = addTyping();
-
-    try {
-      const res = await fetch(`${BACKEND}/chat`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: (window.currentLang === 'de' ? '[Bitte antworte auf Deutsch] ' : '') + text,
-          history: vetHistory.slice(-10).map(m => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.content })),
-          pet_data: {},
-          sitters: [],
-          system_override: VET_SYSTEM,
-        }),
-      });
-      const data = await res.json();
-      const reply = data.reply || "I'm here — could you describe the symptoms in a bit more detail?";
-      typing.remove();
-      addMsg('ai', reply);
-      vetHistory.push({ role: 'assistant', content: reply });
-    } catch {
-      typing.remove();
-      addMsg('ai', 'Connection issue — please check the backend is running and try again.');
-    }
-
-    sendBtn.disabled = false;
-    input.focus();
-  }
-
-  openBtn?.addEventListener('click', () => {
-    modal.style.display = 'flex';
-    input.focus();
-  });
-
+  openBtn?.addEventListener('click', () => { modal.style.display = 'flex'; });
   closeBtn?.addEventListener('click', () => { modal.style.display = 'none'; });
   modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
 
-  sendBtn?.addEventListener('click', sendVetMessage);
-  input?.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendVetMessage(); } });
+  notifyBtn?.addEventListener('click', async () => {
+    const email = notifyInput?.value.trim();
+    if (!email || !email.includes('@')) { notifyInput.style.borderColor = '#e53e3e'; return; }
+    notifyBtn.textContent = '…';
+    notifyBtn.disabled = true;
+    try {
+      await fetch(`${BACKEND}/waitlist`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+    } catch {}
+    notifyInput.style.display = 'none';
+    notifyBtn.style.display = 'none';
+    if (notifySuccess) notifySuccess.style.display = 'block';
+  });
 })();
 
 
@@ -431,7 +377,7 @@ Keep responses concise — 2 to 4 sentences. Never refuse to engage.`;
       form.style.display     = 'none';
       successEl.style.display = 'flex';
     } catch {
-      btn.textContent = 'Join waitlist';
+      btn.textContent = 'Get early access →';
       btn.disabled = false;
       emailInput.style.borderColor = '#e53e3e';
       setTimeout(() => { emailInput.style.borderColor = ''; }, 3000);

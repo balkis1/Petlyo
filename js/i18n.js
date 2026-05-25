@@ -85,7 +85,7 @@ const TRANSLATIONS = {
     'sym.submit':'Get instant advice →','sym.again':'Check another symptom',
     'sym.help':'Need professional help?',
     'sym.findVet':'Find a vet near you','sym.findVet.sub':'Search on Google Maps',
-    'sym.chatVet':'Chat with a vet online','sym.chatVet.sub':'AI-assisted · Free · No wait time',
+    'sym.chatVet':'Vet Online Consultation','sym.chatVet.sub':'Real licensed vets · Coming soon',
     'sym.emergency':'Emergency vet near you','sym.emergency.sub':'Open 24/7 emergency clinics',
     'sym.disclaimer':'⚠️ This is AI-generated guidance for informational purposes only. Always consult a licensed veterinarian for medical decisions.',
     // Sitter portal
@@ -201,7 +201,7 @@ const TRANSLATIONS = {
     'sym.submit':'Sofortigen Rat erhalten →','sym.again':'Weiteres Symptom prüfen',
     'sym.help':'Brauchst du professionelle Hilfe?',
     'sym.findVet':'Tierarzt in deiner Nähe finden','sym.findVet.sub':'Auf Google Maps suchen',
-    'sym.chatVet':'Online mit einem Tierarzt chatten','sym.chatVet.sub':'KI-gestützt · Kostenlos · Keine Wartezeit',
+    'sym.chatVet':'Tierarzt Online-Konsultation','sym.chatVet.sub':'Echte Tierärzte · Demnächst verfügbar',
     'sym.emergency':'Notfalltierarzt in der Nähe','sym.emergency.sub':'Rund um die Uhr geöffnete Notfallkliniken',
     'sym.disclaimer':'⚠️ Dies ist eine KI-generierte Orientierungshilfe und dient nur zu Informationszwecken. Konsultiere immer einen zugelassenen Tierarzt für medizinische Entscheidungen.',
     // Sitter portal

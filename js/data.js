@@ -13,6 +13,8 @@ const SITTERS = [
     yearsExperience: 5,
     numberOfStays: 87,
     rating: 4.97,
+    services: ["sitting"],
+    walkingRate: null,
     traitScores: {
       anxious: 95,
       social: 60,
@@ -40,6 +42,8 @@ const SITTERS = [
     yearsExperience: 8,
     numberOfStays: 203,
     rating: 4.91,
+    services: ["sitting", "walking"],
+    walkingRate: 18,
     traitScores: {
       anxious: 48,
       social: 88,
@@ -67,6 +71,8 @@ const SITTERS = [
     yearsExperience: 7,
     numberOfStays: 142,
     rating: 4.99,
+    services: ["sitting"],
+    walkingRate: null,
     traitScores: {
       anxious: 88,
       social: 70,
@@ -94,6 +100,8 @@ const SITTERS = [
     yearsExperience: 12,
     numberOfStays: 318,
     rating: 5.0,
+    services: ["sitting"],
+    walkingRate: null,
     traitScores: {
       anxious: 85,
       social: 62,
@@ -121,6 +129,8 @@ const SITTERS = [
     yearsExperience: 3,
     numberOfStays: 64,
     rating: 4.88,
+    services: ["sitting", "walking"],
+    walkingRate: 15,
     traitScores: {
       anxious: 38,
       social: 98,
@@ -148,6 +158,8 @@ const SITTERS = [
     yearsExperience: 4,
     numberOfStays: 95,
     rating: 4.93,
+    services: ["sitting", "walking"],
+    walkingRate: 16,
     traitScores: {
       anxious: 70,
       social: 80,
