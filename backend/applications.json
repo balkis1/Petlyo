@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Balkis melki",
+    "city": "Germany",
+    "experience": "5–10 years",
+    "homeType": "House",
+    "ratePerDay": "35",
+    "presence": "yes",
+    "availability": [
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "specialties": [
+      "Cats"
+    ],
+    "bio": "i have 9 experience with cats \ni love them alot \ni can deal with any type",
+    "email": "balkismelki99@gmail.com",
+    "phone": "+4915510172477",
+    "submittedAt": "2026-05-25T01:23:33.721491"
+  }
+]

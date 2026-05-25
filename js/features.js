@@ -176,10 +176,43 @@ document.querySelectorAll('.avail-chip').forEach(chip => {
   chip.addEventListener('click', () => chip.classList.toggle('selected'));
 });
 
-document.getElementById('portal-form')?.addEventListener('submit', e => {
+document.getElementById('portal-form')?.addEventListener('submit', async e => {
   e.preventDefault();
+
+  const specialties = [...document.querySelectorAll('.spec-chip.selected')].map(c => c.dataset.val);
+  const availability = [...document.querySelectorAll('.avail-chip.selected')].map(c => c.dataset.day);
+  const submitBtn = e.target.querySelector('.sym-submit');
+  submitBtn.textContent = 'Submitting…';
+  submitBtn.disabled = true;
+
+  const payload = {
+    name:        document.getElementById('p-name').value.trim(),
+    city:        document.getElementById('p-city').value.trim(),
+    experience:  document.getElementById('p-exp').value,
+    homeType:    document.getElementById('p-home').value,
+    ratePerDay:  document.getElementById('p-rate').value,
+    presence:    document.getElementById('p-presence').value,
+    availability,
+    specialties,
+    bio:         document.getElementById('p-bio').value.trim(),
+    email:       document.getElementById('p-email').value.trim(),
+    phone:       document.getElementById('p-phone').value.trim(),
+  };
+
+  try {
+    await fetch(`${BACKEND}/apply`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch {
+    // show success even if backend is down — data at least attempted
+  }
+
   document.getElementById('portal-form-wrap').style.display = 'none';
   document.getElementById('portal-success').style.display  = 'block';
+  submitBtn.textContent = 'Apply to join →';
+  submitBtn.disabled = false;
 });
 
 
@@ -363,6 +396,47 @@ Keep responses concise — 2 to 4 sentences. Never refuse to engage.`;
 
   sendBtn?.addEventListener('click', sendVetMessage);
   input?.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendVetMessage(); } });
+})();
+
+
+// ════════════════════════════════════════════════════════
+// WAITLIST
+// ════════════════════════════════════════════════════════
+
+(function initWaitlist() {
+  const form       = document.getElementById('waitlist-form');
+  const emailInput = document.getElementById('waitlist-email');
+  const btn        = document.getElementById('waitlist-btn');
+  const successEl  = document.getElementById('waitlist-success');
+  const countText  = document.getElementById('waitlist-count-text');
+
+  if (!form) return;
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    btn.textContent = 'Joining…';
+    btn.disabled = true;
+
+    try {
+      const res  = await fetch(`${BACKEND}/waitlist`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+
+      form.style.display     = 'none';
+      successEl.style.display = 'flex';
+    } catch {
+      btn.textContent = 'Join waitlist';
+      btn.disabled = false;
+      emailInput.style.borderColor = '#e53e3e';
+      setTimeout(() => { emailInput.style.borderColor = ''; }, 3000);
+    }
+  });
 })();
 
 
