@@ -133,15 +133,22 @@ function openPassport() {
   const num = 'PET-' + Math.abs(p.petName.split('').reduce((a,c) => a + c.charCodeAt(0), Date.now() % 100000)).toString().slice(0,6);
   document.getElementById('pp-number').textContent = num;
 
-  document.getElementById('modal-passport').style.display = 'flex';
+  const m = document.getElementById('modal-passport');
+  m.style.display = 'flex';
+  m.classList.add('open');
 }
 
 document.getElementById('passport-close')?.addEventListener('click', () => {
-  document.getElementById('modal-passport').style.display = 'none';
+  const m = document.getElementById('modal-passport');
+  m.classList.remove('open');
+  setTimeout(() => { m.style.display = 'none'; }, 200);
 });
 document.getElementById('modal-passport')?.addEventListener('click', e => {
-  if (e.target === document.getElementById('modal-passport'))
-    document.getElementById('modal-passport').style.display = 'none';
+  const m = document.getElementById('modal-passport');
+  if (e.target === m) {
+    m.classList.remove('open');
+    setTimeout(() => { m.style.display = 'none'; }, 200);
+  }
 });
 document.getElementById('btn-passport')?.addEventListener('click', openPassport);
 
