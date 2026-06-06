@@ -297,15 +297,92 @@ document.getElementById('modal-stay')?.addEventListener('click', e => {
 });
 document.getElementById('btn-live-stay')?.addEventListener('click', openStayModal);
 
-document.getElementById('btn-checkin')?.addEventListener('click', () => {
-  const btn = document.getElementById('btn-checkin');
-  btn.textContent = '✓ Request sent! Sophie will send a photo soon.';
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = '📸 Request check-in from sitter';
-    btn.disabled = false;
-  }, 4000);
+document.getElementById('btn-checkin')?.addEventListener('click', openBehaviorModal);
+
+// ════════════════════════════════════════════════════════
+// BEHAVIOR CHECK-IN MODAL
+// ════════════════════════════════════════════════════════
+function openBehaviorModal() {
+  const m = document.getElementById('modal-behavior');
+  m.style.display = 'flex';
+  m.classList.add('open');
+  showBehaviorStep(1);
+}
+
+function closeBehaviorModal() {
+  const m = document.getElementById('modal-behavior');
+  m.classList.remove('open');
+  setTimeout(() => { m.style.display = 'none'; }, 200);
+}
+
+function showBehaviorStep(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById('behavior-step-' + i).style.display = i === n ? 'block' : 'none';
+  });
+}
+
+document.getElementById('behavior-close')?.addEventListener('click', closeBehaviorModal);
+document.getElementById('modal-behavior')?.addEventListener('click', e => {
+  if (e.target === document.getElementById('modal-behavior')) closeBehaviorModal();
 });
+
+document.querySelectorAll('.bq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const q = btn.dataset.q;
+    document.querySelectorAll(`.bq-btn[data-q="${q}"]`).forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+});
+
+document.getElementById('behavior-submit')?.addEventListener('click', async () => {
+  const answers = {};
+  document.querySelectorAll('.bq-btn.selected').forEach(b => { answers[b.dataset.q] = b.dataset.v; });
+
+  if (Object.keys(answers).length < 5) {
+    alert('Please answer all 5 questions.'); return;
+  }
+
+  showBehaviorStep(2);
+
+  const petData = (typeof state !== 'undefined' && state.petData?.petName) ? state.petData : { petName: 'Your pet', species: 'pet', traits: [] };
+  const BACKEND = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') ? 'http://localhost:8000' : '/api';
+
+  try {
+    const res = await fetch(`${BACKEND}/behavior`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        petName: petData.petName,
+        species: petData.species || 'pet',
+        traits:  petData.traits  || [],
+        eating:   answers.eating,
+        energy:   answers.energy,
+        location: answers.location,
+        sounds:   answers.sounds,
+        posture:  answers.posture,
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Error');
+
+    const score = data.score || 72;
+    const circle = document.getElementById('br-score-circle');
+    const green = getComputedStyle(document.documentElement).getPropertyValue('--green').trim() || '#2E7D52';
+    if (score >= 70) { circle.style.background = green; }
+    else if (score >= 45) { circle.style.background = '#e67e22'; }
+    else { circle.style.background = '#c0392b'; }
+
+    document.getElementById('br-score-num').textContent  = score;
+    document.getElementById('br-status').textContent     = data.status || 'Content';
+    document.getElementById('br-report-text').textContent = data.report || '';
+    showBehaviorStep(3);
+  } catch (e) {
+    showBehaviorStep(1);
+    alert('Something went wrong: ' + e.message);
+  }
+});
+
+document.getElementById('behavior-new')?.addEventListener('click', () => showBehaviorStep(1));
 
 document.querySelectorAll('.mood-chip').forEach(chip => {
   chip.addEventListener('click', () => {
