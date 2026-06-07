@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Petlyo × Royal Canin — Partnership Deck</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --g:#1f6b40;--gd:#0e3d22;--gl:#d4ede0;--gll:#f0faf5;
+  --rc:#c8102e;--rcl:#fff0f2;--rcd:#8b0a1e;
+  --ink:#0f0f0f;--ink2:#555;--border:#e8e8e8;
+  --sand:#fdfaf6;--warm:#faf4ed;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#111;color:var(--ink);}
+
+@media print{
+  body{background:#fff;}
+  .no-print{display:none!important;}
+  .slide{page-break-after:always;border-radius:0!important;margin:0!important;}
+  .confidential-bar{display:flex!important;}
+}
+
+.no-print{text-align:center;padding:24px 0 4px;}
+.save-btn{
+  padding:13px 28px;background:var(--rc);color:#fff;
+  border:none;border-radius:40px;font-size:14px;font-weight:700;
+  cursor:pointer;font-family:inherit;
+  box-shadow:0 8px 32px rgba(200,16,46,.35);
+}
+
+/* ── Confidential watermark bar ── */
+.confidential-bar{
+  display:flex;align-items:center;justify-content:center;
+  background:#fff8f8;border-bottom:1px solid #ffd5d5;
+  padding:8px 24px;gap:12px;font-size:11px;
+  font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:#c0392b;
+}
+
+/* ── Slide base ── */
+.slide{
+  width:1080px;min-height:608px;margin:0 auto 3px;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+
+/* ── Watermark on every slide ── */
+.slide::after{
+  content:'CONFIDENTIAL & PROPRIETARY';
+  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+  font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(200,16,46,.15);white-space:nowrap;pointer-events:none;
+  z-index:99;
+}
+
+/* ── Slide types ── */
+.slide-white{background:#fff;}
+.slide-sand{background:var(--sand);}
+
+/* ── Shared header ── */
+.slide-inner{padding:48px 60px;flex:1;display:flex;flex-direction:column;}
+.s-label{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:6px;}
+.s-label.rc{color:var(--rc);}
+.s-h{font-family:'DM Serif Display',serif;font-size:34px;color:var(--ink);line-height:1.1;margin-bottom:26px;}
+.s-h em{color:var(--g);font-style:italic;}
+.s-h em.rc{color:var(--rc);}
+.slide-num{position:absolute;bottom:20px;right:24px;font-size:10px;font-weight:700;letter-spacing:1px;color:var(--border);}
+.wm{position:absolute;top:20px;right:24px;font-size:12px;color:var(--border);font-family:'DM Serif Display',serif;}
+
+/* ══ COVER ══ */
+.s-cover{
+  background:linear-gradient(135deg,#071a0e 0%,#0e3d22 45%,#1f6b40 100%);
+  flex-direction:row;min-height:608px;
+}
+.cover-l{
+  flex:1.2;display:flex;flex-direction:column;
+  justify-content:center;padding:70px 60px;
+}
+.cover-conf{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(200,16,46,.25);border:1px solid rgba(200,16,46,.4);
+  border-radius:40px;padding:6px 16px;font-size:10px;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;color:#ff9999;
+  margin-bottom:24px;width:fit-content;
+}
+.cover-logos{display:flex;align-items:center;gap:16px;margin-bottom:28px;}
+.cover-logo-petlyo{
+  font-family:'DM Serif Display',serif;font-size:36px;color:#fff;
+}
+.cover-x{font-size:22px;color:rgba(255,255,255,.4);}
+.cover-logo-rc{
+  font-size:14px;font-weight:800;color:rgba(255,255,255,.7);
+  letter-spacing:2px;text-transform:uppercase;
+}
+.cover-h{
+  font-family:'DM Serif Display',serif;font-size:52px;color:#fff;
+  line-height:.95;letter-spacing:-1px;margin-bottom:16px;
+}
+.cover-h em{color:#7ee8a8;font-style:italic;}
+.cover-sub{
+  font-size:16px;font-weight:300;color:rgba(255,255,255,.7);
+  line-height:1.6;max-width:380px;margin-bottom:40px;
+}
+.cover-meta{padding-top:24px;border-top:1px solid rgba(255,255,255,.15);}
+.cover-meta p{font-size:12px;color:rgba(255,255,255,.55);line-height:2;}
+.cover-meta strong{color:rgba(255,255,255,.85);}
+
+.cover-r{
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;padding:60px 48px;
+  background:rgba(255,255,255,.04);border-left:1px solid rgba(255,255,255,.08);
+}
+.cover-badge{
+  background:rgba(200,16,46,.2);border:1px solid rgba(200,16,46,.3);
+  border-radius:16px;padding:28px 32px;text-align:center;
+  margin-bottom:24px;width:100%;
+}
+.cover-badge .cb-icon{font-size:48px;margin-bottom:12px;}
+.cover-badge p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.6;}
+.cover-badge strong{color:#fff;font-size:15px;}
+.cover-stats{display:flex;gap:16px;width:100%;}
+.cs{flex:1;background:rgba(255,255,255,.08);border-radius:12px;padding:16px;text-align:center;}
+.cs-n{font-family:'DM Serif Display',serif;font-size:28px;color:#7ee8a8;}
+.cs-l{font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;}
+
+/* ══ ABOUT ══ */
+.about-row{display:flex;gap:16px;margin-bottom:20px;}
+.about-card{
+  flex:1;border-radius:16px;padding:24px 20px;
+  border:1.5px solid var(--border);
+}
+.about-card.hl{background:var(--g);color:#fff;border-color:var(--g);}
+.about-em{font-size:32px;margin-bottom:10px;}
+.about-h{font-size:13px;font-weight:700;margin-bottom:6px;}
+.about-p{font-size:12px;opacity:.8;line-height:1.6;}
+.about-quote{
+  background:var(--gll);border-left:4px solid var(--g);
+  border-radius:0 12px 12px 0;padding:18px 22px;
+}
+.about-quote p{font-size:14px;color:var(--ink2);line-height:1.7;font-style:italic;}
+
+/* ══ FEATURES ══ */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px;}
+.feat-card{
+  border-radius:14px;padding:22px 18px;
+  border:1.5px solid var(--border);
+}
+.feat-card.live{background:var(--gll);border-color:#c3e6d4;}
+.feat-card.soon{background:#fffbf0;border-color:#ffe4a0;}
+.feat-em{font-size:30px;margin-bottom:10px;}
+.feat-badge{
+  display:inline-block;font-size:9px;font-weight:800;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:3px 9px;border-radius:20px;margin-bottom:8px;
+  background:var(--gl);color:var(--g);
+}
+.feat-badge.soon{background:#fff3c4;color:#b8860b;}
+.feat-h{font-size:13px;font-weight:700;margin-bottom:5px;}
+.feat-p{font-size:11px;color:var(--ink2);line-height:1.5;}
+.feat-note{
+  background:var(--sand);border-radius:12px;padding:16px 22px;
+  display:flex;align-items:center;gap:12px;
+}
+.feat-note p{font-size:13px;color:var(--ink2);line-height:1.6;}
+
+/* ══ AUDIENCE ══ */
+.aud-row{display:flex;gap:14px;margin-bottom:20px;}
+.aud-card{
+  flex:1;border-radius:14px;padding:24px 18px;text-align:center;
+  border:1.5px solid var(--border);background:var(--sand);
+}
+.aud-n{font-family:'DM Serif Display',serif;font-size:40px;color:var(--g);}
+.aud-l{font-size:11px;color:var(--ink2);margin-top:4px;line-height:1.4;}
+.aud-bottom{
+  background:linear-gradient(90deg,var(--gll),#fff);
+  border:1.5px solid var(--gl);border-radius:14px;
+  padding:20px 26px;display:flex;align-items:center;gap:14px;
+}
+.aud-bottom-em{font-size:36px;}
+.aud-bottom p{font-size:14px;color:var(--ink2);line-height:1.7;}
+.aud-bottom strong{color:var(--ink);}
+
+/* ══ JOBS ══ */
+.jobs-top{
+  background:linear-gradient(135deg,var(--gd),var(--g));
+  color:#fff;border-radius:16px;padding:26px 30px;
+  display:flex;gap:20px;align-items:flex-start;margin-bottom:18px;
+}
+.jobs-top-em{font-size:40px;flex-shrink:0;}
+.jobs-top p{font-size:15px;line-height:1.7;font-weight:300;}
+.jobs-top p strong{font-weight:700;}
+.jobs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.jc{border-radius:12px;padding:18px 14px;text-align:center;border:1.5px solid var(--border);}
+.jc-em{font-size:28px;margin-bottom:8px;}
+.jc-h{font-size:12px;font-weight:700;margin-bottom:4px;}
+.jc-p{font-size:11px;color:var(--ink2);line-height:1.5;}
+
+/* ══ PARTNERSHIP ══ */
+.partner-why{
+  background:var(--rcl);border:1.5px solid #ffc0c8;
+  border-radius:16px;padding:24px 28px;
+  display:flex;gap:16px;align-items:flex-start;margin-bottom:20px;
+}
+.partner-why-em{font-size:36px;flex-shrink:0;}
+.partner-why p{font-size:14px;color:var(--ink2);line-height:1.7;}
+.partner-why strong{color:var(--ink);}
+.partner-opps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.po{border-radius:14px;padding:22px 18px;border:1.5px solid var(--border);}
+.po.hl{background:var(--rc);color:#fff;border-color:var(--rc);}
+.po-em{font-size:28px;margin-bottom:10px;}
+.po-h{font-size:13px;font-weight:700;margin-bottom:6px;}
+.po-p{font-size:12px;opacity:.8;line-height:1.55;}
+
+/* ══ ASK ══ */
+.ask-row{display:flex;gap:16px;margin-bottom:20px;}
+.ask-card{flex:1;border-radius:16px;padding:28px 24px;}
+.ask-card.funding{background:var(--g);color:#fff;}
+.ask-card.partner{background:var(--sand);border:1.5px solid var(--border);}
+.ask-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-bottom:10px;}
+.ask-amt{font-family:'DM Serif Display',serif;font-size:42px;margin-bottom:8px;line-height:1;}
+.ask-p{font-size:13px;opacity:.85;line-height:1.6;}
+.ask-use{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.au{text-align:center;border-radius:10px;padding:16px 10px;border:1.5px solid var(--border);}
+.au-em{font-size:22px;margin-bottom:4px;}
+.au-pct{font-family:'DM Serif Display',serif;font-size:28px;color:var(--g);}
+.au-p{font-size:10px;color:var(--ink2);margin-top:3px;line-height:1.4;}
+
+/* ══ CLOSING ══ */
+.s-closing{
+  background:linear-gradient(145deg,#071a0e 0%,#0e3d22 50%,#1f6b40 100%);
+  justify-content:center;align-items:center;text-align:center;
+  padding:70px;min-height:608px;
+}
+.cl-logos{
+  display:flex;align-items:center;justify-content:center;
+  gap:20px;font-size:36px;margin-bottom:32px;
+}
+.cl-x{font-size:20px;color:rgba(255,255,255,.3);}
+.cl-h{
+  font-family:'DM Serif Display',serif;font-size:54px;
+  color:#fff;line-height:1.05;margin-bottom:16px;
+}
+.cl-h em{color:#7ee8a8;font-style:italic;}
+.cl-sub{
+  font-size:17px;color:rgba(255,255,255,.65);font-weight:300;
+  line-height:1.65;max-width:480px;margin:0 auto 44px;
+}
+.cl-chips{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.cl-chip{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:40px;padding:11px 22px;font-size:13px;color:rgba(255,255,255,.85);
+}
+.cl-conf{
+  margin-top:32px;font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(255,255,255,.25);
+}
+</style>
+</head>
+<body>
+
+<div class="no-print" style="padding:24px 0 4px;">
+  <div class="confidential-bar" style="background:#fff8f8;border:none;border-radius:40px;width:fit-content;margin:0 auto 12px;">
+    🔒 CONFIDENTIAL & PROPRIETARY — DO NOT DISTRIBUTE
+  </div>
+  <div style="text-align:center;">
+    <button class="save-btn" onclick="window.print()">⬇ Save as PDF — Cmd+P → Landscape → No margins</button>
+  </div>
+</div>
+
+<!-- ══ SLIDE 1: COVER ══ -->
+<div class="slide s-cover">
+  <div class="cover-l">
+    <div class="cover-conf">🔒 Confidential & Proprietary</div>
+    <div class="cover-logos">
+      <div class="cover-logo-petlyo">🐾 Petlyo</div>
+      <div class="cover-x">×</div>
+      <div class="cover-logo-rc">Royal Canin</div>
+    </div>
+    <h1 class="cover-h">A Partnership<br>Built on <em>Pet Love</em></h1>
+    <p class="cover-sub">Petlyo is the AI platform that matches pets with sitters by personality — and we want Royal Canin alongside us as we grow.</p>
+    <div class="cover-meta">
+      <p><strong>Balkis Melki</strong> — Founder & CEO, Petlyo</p>
+      <p>AI Engineer · Germany · balkismelki31@gmail.com</p>
+      <p>petlyo.vercel.app · linkedin.com/in/balkis-melki-313b47225 · Confidential — not for distribution</p>
+    </div>
+  </div>
+  <div class="cover-r">
+    <div class="cover-badge">
+      <div class="cb-icon">🤝</div>
+      <p><strong>Why this deck?</strong><br>We're looking for a strategic partner and sponsor who shares our belief that every pet deserves exceptional care — and whose brand belongs at the centre of that story.</p>
+    </div>
+    <div class="cover-stats">
+      <div class="cs"><div class="cs-n">AI</div><div class="cs-l">Powered matching</div></div>
+      <div class="cs"><div class="cs-n">7+</div><div class="cs-l">Live features</div></div>
+      <div class="cs"><div class="cs-n">🌍</div><div class="cs-l">EU & MENA</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2: ABOUT PETLYO ══ -->
+<div class="slide slide-white">
+  <div class="slide-inner">
+    <div class="s-label">About Petlyo</div>
+    <h2 class="s-h">The AI platform that truly <em>understands</em> your pet</h2>
+    <div class="about-row">
+      <div class="about-card hl">
+        <div class="about-em">🪪</div>
+        <div class="about-h">Pet Personality Passport</div>
+        <p class="about-p">Every pet gets an AI-generated profile — energy, anxiety, quirks, environment needs — used to find the perfect sitter match.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-em">✨</div>
+        <div class="about-h">AI Sitter Matching</div>
+        <p class="about-p">Scored across 4 compatibility dimensions — not just price and distance. Owners finally find someone who truly fits their pet.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-em">🩺</div>
+        <div class="about-h">Health & Wellness AI</div>
+        <p class="about-p">Symptom checker, behavior check-ins, and AI-generated care guides — keeping pets healthy between vet visits.</p>
+      </div>
+    </div>
+    <div class="about-quote">
+      <p>"Petlyo isn't just another pet sitter platform. It's the first platform that treats every pet as an individual — and builds the trust that makes owners come back every time."</p>
+    </div>
+  </div>
+  <div class="wm">🐾 Petlyo × Royal Canin</div>
+  <div class="slide-num">02</div>
+</div>
+
+<!-- ══ SLIDE 3: FEATURES ══ -->
+<div class="slide slide-sand">
+  <div class="slide-inner">
+    <div class="s-label">Platform Features</div>
+    <h2 class="s-h">Built and <em>live today</em> — more coming fast</h2>
+    <div class="feat-grid">
+      <div class="feat-card live">
+        <div class="feat-em">🪪</div>
+        <div class="feat-badge">Live</div>
+        <div class="feat-h">Pet Personality Passport</div>
+        <p class="feat-p">AI-generated personality profile from a smart questionnaire. Unique to every pet.</p>
+      </div>
+      <div class="feat-card live">
+        <div class="feat-em">✨</div>
+        <div class="feat-badge">Live</div>
+        <div class="feat-h">AI Sitter Matching</div>
+        <p class="feat-p">Compatibility scoring across energy, environment, routine and experience.</p>
+      </div>
+      <div class="feat-card live">
+        <div class="feat-em">🩺</div>
+        <div class="feat-badge">Live</div>
+        <div class="feat-h">Symptom Checker</div>
+        <p class="feat-p">AI health triage — owners assess symptoms early and decide when to see a vet.</p>
+      </div>
+      <div class="feat-card live">
+        <div class="feat-em">📋</div>
+        <div class="feat-badge">Live</div>
+        <div class="feat-h">AI Care Guide</div>
+        <p class="feat-p">Auto-generated care document for sitters. Personalized feeding, routine, stress signals.</p>
+      </div>
+      <div class="feat-card live">
+        <div class="feat-em">🐾</div>
+        <div class="feat-badge">Live</div>
+        <div class="feat-h">Behavior Check-in</div>
+        <p class="feat-p">Sitters report pet behavior, AI generates a wellness report for the owner in real time.</p>
+      </div>
+      <div class="feat-card soon">
+        <div class="feat-em">👨‍⚕️</div>
+        <div class="feat-badge soon">Coming Soon</div>
+        <div class="feat-h">Online Vet Consultations</div>
+        <p class="feat-p">Licensed vets available on-demand. Paid per session — real healthcare access.</p>
+      </div>
+    </div>
+    <div class="feat-note">
+      <span style="font-size:20px;">🏨</span>
+      <p><strong>Long-term vision:</strong> Physical pet hotels across Europe and MENA — the Airbnb for pets, powered by Petlyo's trust network.</p>
+    </div>
+  </div>
+  <div class="wm">🐾 Petlyo × Royal Canin</div>
+  <div class="slide-num">03</div>
+</div>
+
+<!-- ══ SLIDE 4: AUDIENCE ══ -->
+<div class="slide slide-white">
+  <div class="slide-inner">
+    <div class="s-label">Our Audience</div>
+    <h2 class="s-h">Pet owners who <em>genuinely care</em> — your exact customer</h2>
+    <div class="aud-row">
+      <div class="aud-card"><div class="aud-n">85M+</div><div class="aud-l">Pet-owning households<br>across Europe</div></div>
+      <div class="aud-card"><div class="aud-n">72%</div><div class="aud-l">Consider their pet<br>a family member</div></div>
+      <div class="aud-card"><div class="aud-n">€380+</div><div class="aud-l">Average annual spend<br>on pet care per owner</div></div>
+      <div class="aud-card"><div class="aud-n">12%</div><div class="aud-l">MENA pet market<br>growth per year</div></div>
+    </div>
+    <div class="aud-bottom">
+      <div class="aud-bottom-em">🎯</div>
+      <p>Petlyo users are <strong>highly engaged, premium-minded pet owners</strong> who are actively making decisions about their pet's health, diet, and care. They are not casual pet owners — they are the exact audience Royal Canin wants to reach: people who read ingredients, choose premium food, and ask their vet for advice.</p>
+    </div>
+  </div>
+  <div class="wm">🐾 Petlyo × Royal Canin</div>
+  <div class="slide-num">04</div>
+</div>
+
+<!-- ══ SLIDE 5: JOBS & COMMUNITY ══ -->
+<div class="slide slide-sand">
+  <div class="slide-inner">
+    <div class="s-label">Community Impact</div>
+    <h2 class="s-h">Creating <em>real opportunities</em> for pet lovers everywhere</h2>
+    <div class="jobs-top">
+      <div class="jobs-top-em">🎓</div>
+      <p>Petlyo isn't just a platform for owners — it's a <strong>flexible income opportunity</strong> for pet-loving students, young professionals, and animal caregivers who want to earn money doing what they love. We are building a community of verified, trusted sitters across Europe and MENA — and Royal Canin can be the brand that supports and sponsors this community from day one.</p>
+    </div>
+    <div class="jobs-grid">
+      <div class="jc"><div class="jc-em">🎓</div><div class="jc-h">Students</div><p class="jc-p">Earn €20–€60/day caring for pets around their university schedule.</p></div>
+      <div class="jc"><div class="jc-em">💼</div><div class="jc-h">Young Professionals</div><p class="jc-p">Flexible side income for animal lovers who work full-time.</p></div>
+      <div class="jc"><div class="jc-em">🐾</div><div class="jc-h">Pet Caregivers</div><p class="jc-p">Experienced animal carers building a verified professional profile.</p></div>
+      <div class="jc"><div class="jc-em">🌍</div><div class="jc-h">Pan-European</div><p class="jc-p">Starting in Germany, expanding across EU and MENA — thousands of sitter roles to fill.</p></div>
+    </div>
+  </div>
+  <div class="wm">🐾 Petlyo × Royal Canin</div>
+  <div class="slide-num">05</div>
+</div>
+
+<!-- ══ SLIDE 6: WHY ROYAL CANIN ══ -->
+<div class="slide slide-white">
+  <div class="slide-inner">
+    <div class="s-label rc">Why Royal Canin</div>
+    <h2 class="s-h">The most trusted name in pet nutrition<br>meets the <em class="rc">future of pet care</em></h2>
+    <div class="partner-why">
+      <div class="partner-why-em">❤️</div>
+      <p>Royal Canin is built on the belief that <strong>each pet is unique</strong> — precisely matched nutrition for every breed, age, and condition. Petlyo is built on exactly the same belief: that every pet deserves a uniquely matched sitter. Our values are not just aligned — they are identical. This is not a logo placement deal. This is a natural brand partnership.</p>
+    </div>
+    <div class="partner-opps">
+      <div class="po hl">
+        <div class="po-em">📋</div>
+        <div class="po-h">Care Guide Integration</div>
+        <p class="po-p">Royal Canin products recommended inside every AI-generated Care Guide — personalized to the pet's species, breed, age, and health profile.</p>
+      </div>
+      <div class="po">
+        <div class="po-em">🐾</div>
+        <div class="po-h">Pet Passport Branding</div>
+        <p class="po-p">"Nutrition powered by Royal Canin" badge on every Pet Personality Passport — seen by every owner and sitter on the platform.</p>
+      </div>
+      <div class="po">
+        <div class="po-em">📣</div>
+        <div class="po-h">Sitter Community Sponsor</div>
+        <p class="po-p">Royal Canin as the official sponsor of the Petlyo sitter community — brand visibility to thousands of engaged pet carers across Europe.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wm">🐾 Petlyo × Royal Canin</div>
+  <div class="slide-num">06</div>
+</div>
+
+<!-- ══ SLIDE 7: TEAM ══ -->
+<div class="slide slide-white">
+  <div class="slide-inner">
+    <div class="s-label">The Founder</div>
+    <h2 class="s-h">Built by someone who <em>lives this problem</em> every day</h2>
+    <div style="display:flex;gap:32px;align-items:flex-start;">
+      <div style="flex-shrink:0;">
+        <img src="balkis.png" alt="Balkis Melki"
+          style="width:220px;height:260px;object-fit:cover;object-position:top;
+                 border-radius:20px;box-shadow:0 12px 40px rgba(0,0,0,.15);display:block;">
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:14px;">
+        <div>
+          <h3 style="font-family:'DM Serif Display',serif;font-size:32px;margin-bottom:4px;">Balkis Melki</h3>
+          <p style="font-size:14px;color:var(--g);font-weight:700;margin-bottom:8px;">Founder & CEO — AI Engineer, Germany</p>
+            <a href="https://www.linkedin.com/in/balkis-melki-313b47225/" style="font-size:12px;color:var(--ink2);text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-bottom:14px;background:var(--sand);padding:5px 12px;border-radius:20px;border:1px solid var(--border);">🔗 linkedin.com/in/balkis-melki-313b47225</a>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;">
+            <span style="background:var(--gll);border:1px solid var(--gl);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--g);font-weight:600;">AI Engineering</span>
+            <span style="background:var(--gll);border:1px solid var(--gl);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--g);font-weight:600;">Full-Stack Development</span>
+            <span style="background:var(--gll);border:1px solid var(--gl);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--g);font-weight:600;">9 Years Cat Owner</span>
+            <span style="background:var(--gll);border:1px solid var(--gl);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--g);font-weight:600;">Based in Germany</span>
+          </div>
+          <p style="font-size:14px;color:var(--ink2);line-height:1.8;font-style:italic;border-left:3px solid var(--g);padding-left:16px;margin-bottom:18px;">
+            "I spent 9 years caring for cats and watching pet owners — including myself — struggle with the same anxiety every time they needed to travel. I knew the problem was real and completely unsolved. I have the technical skill and the personal obsession to fix it properly."
+          </p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+          <div style="background:var(--sand);border-radius:12px;padding:14px;border:1px solid var(--border);">
+            <div style="font-size:22px;margin-bottom:6px;">🤖</div>
+            <div style="font-size:12px;font-weight:700;margin-bottom:3px;">AI Engineer</div>
+            <p style="font-size:11px;color:var(--ink2);">Built entire platform solo — matching engine, APIs, frontend & infrastructure</p>
+          </div>
+          <div style="background:var(--sand);border-radius:12px;padding:14px;border:1px solid var(--border);">
+            <div style="font-size:22px;margin-bottom:6px;">🐱</div>
+            <div style="font-size:12px;font-weight:700;margin-bottom:3px;">9 Years Pet Owner</div>
+            <p style="font-size:11px;color:var(--ink2);">Deep lived understanding of the pet owner anxiety problem</p>
+          </div>
+          <div style="background:var(--sand);border-radius:12px;padding:14px;border:1px solid var(--border);">
+            <div style="font-size:22px;margin-bottom:6px;">🏨</div>
+            <div style="font-size:12px;font-weight:700;margin-bottom:3px;">Big Vision</div>
+            <p style="font-size:11px;color:var(--ink2);">Dreams of building Europe's leading pet hotel network</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wm">🐾 Petlyo × Royal Canin</div>
+  <div class="slide-num">07</div>
+</div>
+
+<!-- ══ SLIDE 8: THE ASK ══ -->
+<div class="slide slide-sand">
+  <div class="slide-inner">
+    <div class="s-label">What We're Looking For</div>
+    <h2 class="s-h">Strategic partnership <em>&</em> sponsorship</h2>
+    <div class="ask-row">
+      <div class="ask-card funding">
+        <div class="ask-label">Sponsorship / Investment</div>
+        <div class="ask-amt">€50K–€100K</div>
+        <p class="ask-p">Strategic sponsorship or pre-seed investment from Royal Canin — to scale the platform, acquire first users, and bring the Royal Canin brand to the centre of Europe's most innovative pet care platform.</p>
+      </div>
+      <div class="ask-card partner">
+        <div class="ask-label">What You Get</div>
+        <div class="ask-amt" style="font-family:'DM Serif Display',serif;font-size:34px;color:var(--rc);">Brand Partner</div>
+        <p class="ask-p">Exclusive integration in Care Guides and Pet Passports · Sitter community sponsorship · Co-branded marketing · First-mover advantage before competitors arrive · Direct access to 85M+ premium pet owners in Europe & MENA.</p>
+      </div>
+    </div>
+    <div class="ask-use">
+      <div class="au"><div class="au-em">🤖</div><div class="au-pct">35%</div><p class="au-p">AI infrastructure upgrade</p></div>
+      <div class="au"><div class="au-em">📣</div><div class="au-pct">30%</div><p class="au-p">User acquisition & marketing</p></div>
+      <div class="au"><div class="au-em">🌐</div><div class="au-pct">20%</div><p class="au-p">Domain, security & scale</p></div>
+      <div class="au"><div class="au-em">🩺</div><div class="au-pct">15%</div><p class="au-p">Vet partnerships & booking</p></div>
+    </div>
+  </div>
+  <div class="wm">🐾 Petlyo × Royal Canin</div>
+  <div class="slide-num">08</div>
+</div>
+
+<!-- ══ SLIDE 9: CONTACT ══ -->
+<div class="slide slide-white">
+  <div class="slide-inner" style="justify-content:center;align-items:center;text-align:center;">
+    <div style="position:absolute;top:28px;left:44px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--ink2);">Contact</div>
+    <div style="position:absolute;top:28px;right:44px;font-family:'DM Serif Display',serif;font-size:18px;color:var(--g);">🐾 Petlyo</div>
+
+    <h2 style="font-family:'DM Serif Display',serif;font-size:42px;color:var(--ink);margin-bottom:40px;">We'd love to tell you more!</h2>
+
+    <img src="balkis.png" alt="Balkis Melki"
+      style="width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:top;
+             box-shadow:0 8px 32px rgba(0,0,0,.15);margin-bottom:20px;border:3px solid var(--gl);">
+
+    <h3 style="font-family:'DM Serif Display',serif;font-size:28px;color:var(--g);margin-bottom:4px;">Balkis Melki</h3>
+    <p style="font-size:14px;color:var(--ink2);margin-bottom:24px;">Founder & CEO, Petlyo</p>
+
+    <div style="display:flex;flex-direction:column;gap:10px;align-items:center;margin-bottom:28px;">
+      <a href="mailto:balkismelki31@gmail.com" style="font-size:15px;color:var(--ink2);text-decoration:none;">balkismelki31@gmail.com</a>
+      <a href="https://petlyo.vercel.app" style="font-size:15px;color:var(--ink2);text-decoration:none;">petlyo.vercel.app</a>
+    </div>
+
+    <a href="https://www.linkedin.com/in/balkis-melki-313b47225/" style="text-decoration:none;">
+      <div style="width:44px;height:44px;background:#0077b5;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+    </a>
+  </div>
+  <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(200,16,46,.15);white-space:nowrap;">CONFIDENTIAL & PROPRIETARY</div>
+  <div class="slide-num">09</div>
+</div>
+
+<!-- ══ SLIDE 10: CLOSING ══ -->
+<div class="slide s-closing">
+  <h1 class="cl-h">Let's build the future<br>of pet care <em>together.</em></h1>
+  <p class="cl-sub">Every pet is unique. Every owner deserves confidence. Royal Canin and Petlyo share the same mission — let's make it real.</p>
+  <div class="cl-chips">
+    <div class="cl-chip">✉ balkismelki31@gmail.com</div>
+    <div class="cl-chip">🌐 petlyo.vercel.app</div>
+    <div class="cl-chip">📍 Germany</div>
+  </div>
+  <div class="cl-conf">Confidential & Proprietary · © 2026 Petlyo · All Rights Reserved · Do Not Distribute</div>
+</div>
+
+</body>
+</html>
