@@ -103,20 +103,23 @@ authSubmit?.addEventListener('click', async () => {
         email, password,
         options: { data: { role: authRole } }
       });
-      if (error) { showError(error.message); return; }
+      if (error) { showError(friendlyError(error.message)); return; }
 
       if (data.session) {
-        // Email confirmation disabled — logged in immediately
         updateNavUser(data.user, authRole);
         closeAuth();
       } else {
-        // Email confirmation required
-        showError('✉️ Check your email and click the confirmation link, then sign in here.');
-        setMode(false);
+        // Show "check email" state
+        document.querySelector('.auth-form').style.display = 'none';
+        document.querySelector('.auth-toggle').style.display = 'none';
+        document.getElementById('auth-role-picker').style.display = 'none';
+        authTitle.textContent = '✉️ Check your email';
+        authSub.textContent   = `We sent a confirmation link to ${email}. Click it, then come back here and sign in.`;
+        authSub.style.fontSize = '1rem';
       }
     } else {
       const { data, error } = await sb.auth.signInWithPassword({ email, password });
-      if (error) { showError(error.message); return; }
+      if (error) { showError(friendlyError(error.message)); return; }
       const role = data.user?.user_metadata?.role || 'owner';
       updateNavUser(data.user, role);
       closeAuth();
@@ -161,6 +164,19 @@ function updateNavUser(user, role) {
   if (navUser)   navUser.style.display = 'flex';
   if (btnAuth)   btnAuth.style.display = 'none';
   if (btnStart)  btnStart.style.display = 'none';
+}
+
+function friendlyError(msg) {
+  const m = (msg || '').toLowerCase();
+  if (m.includes('rate limit') || m.includes('too many'))
+    return 'Too many attempts — please wait a few minutes and try again.';
+  if (m.includes('invalid login') || m.includes('invalid credentials'))
+    return 'Wrong email or password. Check and try again.';
+  if (m.includes('already registered') || m.includes('already exists'))
+    return 'This email is already registered. Try signing in instead.';
+  if (m.includes('email not confirmed'))
+    return 'Please confirm your email first — check your inbox.';
+  return msg;
 }
 
 function showError(msg) {

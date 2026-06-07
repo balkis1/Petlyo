@@ -2,6 +2,8 @@ import asyncio
 import json
 import os
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -107,6 +109,44 @@ class BehaviorRequest(BaseModel):
     sounds: str = 'quiet or purring'
     posture: str = 'relaxed and loose body posture'
 
+class CareGuideRequest(BaseModel):
+    petData: dict = {}
+
+@app.post("/careguide")
+def care_guide(req: CareGuideRequest):
+    import urllib.request, urllib.error
+    groq_key = os.getenv('GROQ_API_KEY', '').strip()
+    if not groq_key:
+        raise HTTPException(status_code=500, detail='GROQ_API_KEY not set')
+
+    p        = req.petData
+    name     = p.get('petName', 'Your pet')
+    species  = p.get('species', 'pet')
+    breed    = p.get('breed', '')
+    age      = p.get('age', '')
+    traits   = ', '.join(p.get('traits', [])) or 'balanced'
+    env      = ', '.join(p.get('environment', [])) or 'standard home'
+    feeding  = p.get('feedingSchedule', '')
+    exercise = p.get('exercise', '')
+    meds     = p.get('medication', '')
+    notes    = p.get('extraNotes', '')
+
+    prompt = f"""You are writing a professional, warm pet care guide for a sitter. Generate a complete care guide for this pet.
+
+Pet details: Name: {name}, Species: {species}, Breed: {breed or 'N/A'}, Age: {age or 'N/A'}, Traits: {traits}, Environment: {env}, Feeding: {feeding or 'N/A'}, Exercise: {exercise or 'N/A'}, Medications: {meds or 'none'}, Notes: {notes or 'none'}
+
+Write a care guide with EXACTLY these section headers in ALL CAPS followed by a colon:
+PERSONALITY: FEEDING: DAILY ROUTINE: STRESS SIGNALS: COMFORT & SAFETY: MEDICATIONS: EMERGENCY: OWNER'S NOTE:
+
+Each section 2-4 sentences. Warm, professional. Use {name}'s name throughout."""
+
+    from langchain_groq import ChatGroq
+    from langchain_core.messages import HumanMessage
+    llm = ChatGroq(model='llama-3.3-70b-versatile', api_key=groq_key, temperature=0.7, max_tokens=800)
+    result = llm.invoke([HumanMessage(content=prompt)])
+    return {'guide': result.content.strip(), 'petName': name, 'species': species}
+
+
 @app.post("/behavior")
 def behavior_checkin(req: BehaviorRequest):
     import urllib.request, urllib.error
@@ -138,21 +178,11 @@ Write a warm, professional behavioral wellness report for the pet owner. Structu
 
 Keep the tone warm, reassuring when appropriate, and honest when concerns exist. Use the pet's name throughout."""
 
-    payload = json.dumps({
-        'model': 'llama3-70b-8192',
-        'messages': [{'role': 'user', 'content': prompt}],
-        'temperature': 0.7,
-        'max_tokens': 400
-    }).encode()
-
-    req2 = urllib.request.Request(
-        'https://api.groq.com/openai/v1/chat/completions',
-        data=payload,
-        headers={'Authorization': f'Bearer {groq_key}', 'Content-Type': 'application/json'}
-    )
-    with urllib.request.urlopen(req2, timeout=20) as r:
-        result = json.loads(r.read())
-        text = result['choices'][0]['message']['content'].strip()
+    from langchain_groq import ChatGroq
+    from langchain_core.messages import HumanMessage
+    llm = ChatGroq(model='llama-3.3-70b-versatile', api_key=groq_key, temperature=0.7, max_tokens=400)
+    result = llm.invoke([HumanMessage(content=prompt)])
+    text = result.content.strip()
 
     score = 72; status = 'Content'
     for line in text.splitlines():

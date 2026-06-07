@@ -2,7 +2,7 @@ import os, json, urllib.request, urllib.error
 from http.server import BaseHTTPRequestHandler
 
 GROQ_URL   = 'https://api.groq.com/openai/v1/chat/completions'
-GROQ_MODEL = 'llama3-70b-8192'
+GROQ_MODEL = 'llama-3.3-70b-versatile'
 
 class handler(BaseHTTPRequestHandler):
 
