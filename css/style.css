@@ -2422,10 +2422,15 @@ a { color: var(--green); text-decoration: none; }
   position: relative;
 }
 .passport-close {
-  position: absolute; top: -14px; right: -14px; z-index: 10;
-  width: 36px; height: 36px; border-radius: 50%; border: none;
-  background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  position: absolute; top: 20px; right: 20px; z-index: 10;
+  width: 30px; height: 30px; border-radius: 8px; border: none;
+  background: #f3f3f3; color: #999;
+  font-size: 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, color .15s;
+}
+.passport-close:hover {
+  background: #e8e8e8; color: var(--text);
 }
 .passport-card {
   background: linear-gradient(145deg, #0D8562 0%, #16A97A 60%, #1BBE88 100%);
