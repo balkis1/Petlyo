@@ -1,8 +1,9 @@
-import os, json, urllib.request, urllib.error
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend'))
+
+import json
 from http.server import BaseHTTPRequestHandler
 
-GROQ_URL   = 'https://api.groq.com/openai/v1/chat/completions'
-GROQ_MODEL = 'llama-3.3-70b-versatile'
 
 class handler(BaseHTTPRequestHandler):
 
@@ -74,30 +75,13 @@ OWNER'S NOTE:
 
 Keep each section concise — 2-4 sentences. Write warmly and professionally. Use {name}'s name throughout."""
 
-        groq_key = os.getenv('GROQ_API_KEY', '').strip()
-        if not groq_key:
-            self._respond(500, {'error': 'GROQ_API_KEY not configured'})
-            return
-
-        payload = json.dumps({
-            'model': GROQ_MODEL,
-            'messages': [{'role': 'user', 'content': prompt}],
-            'temperature': 0.7,
-            'max_tokens': 800
-        }).encode()
-
-        req = urllib.request.Request(
-            GROQ_URL, data=payload,
-            headers={'Authorization': f'Bearer {groq_key}', 'Content-Type': 'application/json'}
-        )
-
         try:
-            with urllib.request.urlopen(req, timeout=25) as r:
-                result = json.loads(r.read())
-                text   = result['choices'][0]['message']['content'].strip()
-                self._respond(200, {'guide': text, 'petName': name, 'species': species})
-        except urllib.error.HTTPError as e:
-            self._respond(500, {'error': f'Groq error: {e.code}'})
+            from agent import get_llm
+            llm = get_llm()
+            from langchain_core.messages import HumanMessage
+            response = llm.invoke([HumanMessage(content=prompt)])
+            text = response.content.strip()
+            self._respond(200, {'guide': text, 'petName': name, 'species': species})
         except Exception as e:
             self._respond(500, {'error': str(e)})
 
